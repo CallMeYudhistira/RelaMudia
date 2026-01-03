@@ -6,11 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function admin(){
-        return view('pages.home.admin');
-    }
-
-    public function user(){
-        return view('pages.home.user');
+    public function __invoke(){
+        return view('dashboard');
     }
 }
