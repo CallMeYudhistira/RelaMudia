@@ -29,7 +29,7 @@
             <div class="mb-5">
                 <label class="block text-sm font-medium mb-1">Email</label>
                 <input type="email" name="email"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
                     placeholder="you@example.com" value="{{ old('email') }}">
                 @error('email')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
@@ -39,7 +39,7 @@
             <div class="mb-6">
                 <label class="block text-sm font-medium mb-1">Password</label>
                 <input type="password" name="password"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
                     placeholder="••••••••">
                 @error('password')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>

@@ -5,13 +5,13 @@
             @if (isset(auth()->user()->role) && auth()->user()->role == 'admin')
                 <x-nav-link class="hover:text-teal-600" href="{{ route('dashboard') }}" :active="request()->is('dashboard*')">Dashboard</x-nav-link>
                 <x-nav-link class="hover:text-teal-600" href="{{ route('data') }}" :active="request()->is('data*')">Data</x-nav-link>
-                <x-nav-link class="hover:text-teal-600" href="{{ route('transaction') }}" :active="request()->is('transaction*')">Transaction</x-nav-link>
-                <x-nav-link class="hover:text-teal-600" href="{{ route('report') }}" :active="request()->is('report*')">Report</x-nav-link>
+                <x-nav-link class="hover:text-teal-600" href="{{ route('transaction.index') }}" :active="request()->is('transaction*')">Transaction</x-nav-link>
+                <x-nav-link class="hover:text-teal-600" href="{{ route('report.index') }}" :active="request()->is('report*')">Report</x-nav-link>
             @else
                 <x-nav-link class="hover:text-teal-600" href="{{ route('dashboard') }}" :active="request()->is('dashboard*')">Dashboard</x-nav-link>
-                <x-nav-link class="hover:text-teal-600" href="{{ route('items') }}" :active="request()->is('items*')">Items</x-nav-link>
-                <x-nav-link class="hover:text-teal-600" href="{{ route('payment') }}" :active="request()->is('payment*')">Payment</x-nav-link>
-                <x-nav-link class="hover:text-teal-600" href="{{ route('profile') }}" :active="request()->is('profile*')">Profile</x-nav-link>
+                <x-nav-link class="hover:text-teal-600" href="{{ route('items.list') }}" :active="request()->is('items*')">Items</x-nav-link>
+                <x-nav-link class="hover:text-teal-600" href="{{ route('payment.index') }}" :active="request()->is('payment*')">Payment</x-nav-link>
+                <x-nav-link class="hover:text-teal-600" href="{{ route('profile.index') }}" :active="request()->is('profile*')">Profile</x-nav-link>
             @endif
         </nav>
         @guest
