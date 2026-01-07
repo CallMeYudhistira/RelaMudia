@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('multimedia_items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->decimal('price_per_day', 12, 2);
             $table->integer('stock');

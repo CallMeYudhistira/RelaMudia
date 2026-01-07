@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Data | Users</x-slot:title>
+    <x-slot:title>Data | Categories</x-slot:title>
 
     @if (session('success'))
         <div class="fixed top-4 right-4 z-50">
@@ -31,10 +31,10 @@
                 <div
                     class="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between border-b border-gray-200">
 
-                    <form action="{{ route('users.index') }}" method="GET" class="flex items-center gap-2">
+                    <form action="{{ route('categories.index') }}" method="GET" class="flex items-center gap-2">
                         <div class="relative">
                             <i class="bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
-                            <input type="text" name="search" placeholder="Cari pengguna..."
+                            <input type="text" name="search" placeholder="Cari kategori..."
                                 value="{{ $search ?? '' }}" autocomplete="off"
                                 class="w-64 rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500">
                         </div>
@@ -44,10 +44,10 @@
                         </button>
                     </form>
 
-                    <a href="{{ route('users.create') }}"
+                    <a href="{{ route('categories.create') }}"
                         class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
                         <i class="bx bx-plus"></i>
-                        Tambah Pengguna
+                        Tambah Kategori
                     </a>
                 </div>
 
@@ -56,25 +56,16 @@
                         <thead class="bg-gray-50 text-gray-600">
                             <tr>
                                 <th class="px-4 py-3 text-center font-semibold">#</th>
-                                <th class="px-4 py-3 text-left font-semibold">Nama Lengkap</th>
-                                <th class="px-4 py-3 text-left font-semibold">Email</th>
-                                <th class="px-4 py-3 text-center font-semibold">Role</th>
+                                <th class="px-4 py-3 text-left font-semibold">Nama Kategori</th>
                                 <th class="px-4 py-3 text-center font-semibold">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            @foreach ($users as $i => $user)
+                            @foreach ($categories as $i => $category)
                                 {{-- Kita definisikan x-data di level TR agar mencakup tombol aksi dan modal --}}
                                 <tr class="hover:bg-gray-50" x-data="{ openDelete: false, openMenu: false }">
                                     <td class="px-4 py-3 text-center w-5">{{ $i + 1 }}</td>
-                                    <td class="px-4 py-3 font-medium text-gray-800">{{ $user->name }}</td>
-                                    <td class="px-4 py-3 text-gray-600">{{ $user->email }}</td>
-                                    <td class="px-4 py-3 text-center">
-                                        <span
-                                            class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
-                                            {{ $user->role }}
-                                        </span>
-                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-800">{{ $category->name }}</td>
                                     <td class="px-4 py-3 text-center relative w-10">
                                         <button @click="openMenu = !openMenu"
                                             class="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">
@@ -84,21 +75,19 @@
 
                                         <div x-show="openMenu" @click.outside="openMenu = false" x-transition
                                             class="absolute right-0 z-40 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg text-left">
-                                            <a href="{{ route('users.edit', $user->id) }}"
+                                            <a href="{{ route('categories.edit', $category->id) }}"
                                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                 Ubah
                                             </a>
 
-                                            @if (auth()->user()->id !== $user->id)
-                                                <button @click="openDelete = true; openMenu = false"
-                                                    class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                                                    Hapus
-                                                </button>
-                                            @endif
+                                            <button @click="openDelete = true; openMenu = false"
+                                                class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                                Hapus
+                                            </button>
                                         </div>
 
                                         {{-- MODAL DIPANGGIL DI SINI: Harus di dalam TD agar tidak merusak struktur TR --}}
-                                        @include('pages.data.users.delete')
+                                        @include('pages.data.categories.delete')
                                     </td>
                                 </tr>
                             @endforeach

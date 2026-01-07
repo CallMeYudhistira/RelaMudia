@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Data\CategoryController;
 use App\Http\Controllers\Data\ItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Data\UserController;
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/data')->group(function(){
         Route::resource('users', UserController::class);
         Route::resource('items', ItemController::class);
+        Route::resource('categories', CategoryController::class);
         Route::redirect('/', route('users.index'))->name('data');
     });
 

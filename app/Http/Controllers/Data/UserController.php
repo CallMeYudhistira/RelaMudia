@@ -18,7 +18,7 @@ class UserController extends Controller
 
         $users = User::query();
         if ($search) {
-            $users->where('name', 'like', "%$search%");
+            $users->where('name', 'LIKE', "%$search%");
         }
         $users = $users->get();
 
