@@ -51,7 +51,7 @@
                     </a>
                 </div>
 
-                <div class="overflow-x-auto">
+                <div>
                     <table class="w-full text-sm">
                         <thead class="bg-gray-50 text-gray-600">
                             <tr>
@@ -64,49 +64,41 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($users as $i => $user)
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-4 py-3 text-center">
-                                        {{ $i + 1 }}
-                                    </td>
-                                    <td class="px-4 py-3 font-medium text-gray-800">
-                                        {{ $user->name }}
-                                    </td>
-                                    <td class="px-4 py-3 text-gray-600">
-                                        {{ $user->email }}
-                                    </td>
+                                {{-- Kita definisikan x-data di level TR agar mencakup tombol aksi dan modal --}}
+                                <tr class="hover:bg-gray-50" x-data="{ openDelete: false, openMenu: false }">
+                                    <td class="px-4 py-3 text-center">{{ $i + 1 }}</td>
+                                    <td class="px-4 py-3 font-medium text-gray-800">{{ $user->name }}</td>
+                                    <td class="px-4 py-3 text-gray-600">{{ $user->email }}</td>
                                     <td class="px-4 py-3 text-center">
                                         <span
                                             class="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
                                             {{ $user->role }}
                                         </span>
                                     </td>
-                                    <td class="text-center" x-data="{ open: false }">
-                                        <button @click="open = !open"
+                                    <td class="px-4 py-3 text-center relative">
+                                        <button @click="openMenu = !openMenu"
                                             class="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">
                                             Aksi
                                             <i class='bx bx-chevron-down text-lg'></i>
                                         </button>
 
-                                        <div x-show="open" @click.outside="open = false" x-transition
-                                            class="absolute z-50 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg text-left">
-
+                                        <div x-show="openMenu" @click.outside="openMenu = false" x-transition
+                                            class="absolute right-0 z-40 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg text-left">
                                             <a href="{{ route('users.edit', $user->id) }}"
                                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                 Ubah
                                             </a>
 
                                             @if (auth()->user()->id !== $user->id)
-                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                                    onsubmit="return confirm('Yakin ingin menghapus?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                                                        Hapus
-                                                    </button>
-                                                </form>
+                                                <button @click="openDelete = true; openMenu = false"
+                                                    class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                                    Hapus
+                                                </button>
                                             @endif
                                         </div>
+
+                                        {{-- MODAL DIPANGGIL DI SINI: Harus di dalam TD agar tidak merusak struktur TR --}}
+                                        @include('pages.data.users.delete')
                                     </td>
                                 </tr>
                             @endforeach

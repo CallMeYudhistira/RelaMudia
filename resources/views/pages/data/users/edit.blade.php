@@ -41,7 +41,7 @@
                                 </span>
                                 <input type="text" name="name" id="name" required
                                     class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-3 text-gray-900 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none"
-                                    placeholder="Masukkan nama lengkap" value="{{ $user->name }}" autocomplete="off">
+                                    placeholder="Masukkan nama lengkap" value="{{ old('name', $user->name) }}" autocomplete="off">
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@
                                 </span>
                                 <input type="email" name="email" id="email" required
                                     class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-3 text-gray-900 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none"
-                                    placeholder="user@example.com" value="{{ $user->email }}" autocomplete="off">
+                                    placeholder="user@example.com" value="{{ old('email', $user->email) }}" autocomplete="off">
                             </div>
                         </div>
 
@@ -80,8 +80,8 @@
                                 <select name="role" id="role" required
                                     class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-10 text-gray-900 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none appearance-none">
                                     <option value="" disabled selected>Pilih Role</option>
-                                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                                    <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
                                 </select>
                                 <span
                                     class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
