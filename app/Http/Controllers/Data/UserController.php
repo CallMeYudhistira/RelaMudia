@@ -5,16 +5,24 @@ namespace App\Http\Controllers\Data;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('pages.data.users.index', compact('users'));
+        $search = $request->search;
+
+        $users = User::query();
+        if ($search) {
+            $users->where('name', 'like', "%$search%");
+        }
+        $users = $users->get();
+
+        return view('pages.data.users.index', compact('users', 'search'));
     }
 
     /**
@@ -22,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.data.users.create');
     }
 
     /**
@@ -30,7 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6',
+            'role' => 'required|in:admin,user',
+        ]);
+
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+
+        return redirect()->route('users.index')->with('success', 'Data Berhasil Ditambah!');
     }
 
     /**
@@ -46,7 +64,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.data.users.edit', compact('user'));
     }
 
     /**
@@ -54,7 +73,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6',
+            'role' => 'required|in:admin,user',
+        ]);
+
+        if($request->password){
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            $data['password'] = $user->password;
+        }
+        $user->update($data);
+
+        return redirect()->route('users.index')->with('success', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -62,6 +97,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('users.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

@@ -10,21 +10,13 @@
         </div>
     @endif
 
-    @if (session('error') || $errors->any())
+    @if (session('error'))
         <div class="fixed top-4 right-4 z-50">
             <div class="rounded-lg bg-red-600 px-4 py-3 text-white shadow-lg max-w-md">
                 <div class="flex items-start gap-3">
                     <i class="bx bx-error-circle text-xl mt-0.5"></i>
                     <div class="text-sm">
-                        @if (session('error'))
-                            {{ session('error') }}
-                        @else
-                            <ul class="list-disc pl-4 space-y-1">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
+                        {{ session('error') }}
                     </div>
                 </div>
             </div>
@@ -43,7 +35,7 @@
                         <div class="relative">
                             <i class="bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
                             <input type="text" name="search" placeholder="Cari pengguna..."
-                                value="{{ $search ?? '' }}"
+                                value="{{ $search ?? '' }}" autocomplete="off"
                                 class="w-64 rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500">
                         </div>
                         <button type="submit"
