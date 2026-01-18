@@ -1,28 +1,6 @@
 <x-layout>
     <x-slot:title>Data | Users</x-slot:title>
 
-    @if (session('success'))
-        <div class="fixed top-4 right-4 z-50">
-            <div class="flex items-center gap-3 rounded-lg bg-green-600 px-4 py-3 text-white shadow-lg">
-                <i class="bx bx-check-circle text-xl"></i>
-                <span class="text-sm font-medium">{{ session('success') }}</span>
-            </div>
-        </div>
-    @endif
-
-    @if (session('error'))
-        <div class="fixed top-4 right-4 z-50">
-            <div class="rounded-lg bg-red-600 px-4 py-3 text-white shadow-lg max-w-md">
-                <div class="flex items-start gap-3">
-                    <i class="bx bx-error-circle text-xl mt-0.5"></i>
-                    <div class="text-sm">
-                        {{ session('error') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="py-6">
         <div class="mx-auto max-w-7xl">
 

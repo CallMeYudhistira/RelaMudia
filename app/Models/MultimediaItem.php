@@ -8,13 +8,17 @@ class MultimediaItem extends Model
 {
     protected $fillable = [
         'name',
-        'category',
+        'category_id',
         'description',
         'price_per_day',
         'stock',
         'status',
         'image',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 
     public function rentalDetails()
     {

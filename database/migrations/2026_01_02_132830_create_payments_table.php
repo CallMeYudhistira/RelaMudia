@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('rental_id')->constrained()->cascadeOnDelete();
             $table->string('payment_method');
             $table->string('payment_reference')->nullable();
-            $table->decimal('amount', 12, 2);
+            $table->integer('amount');
             $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
             $table->timestamps();
         });

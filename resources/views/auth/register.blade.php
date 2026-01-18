@@ -12,6 +12,7 @@
 
     <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
         <div class="text-center mb-8">
+            <img src="{{ asset('favicon.svg') }}" class="w-100 h-35 object-contain" style="margin: -1rem 0;">
             <h1 class="text-3xl font-bold text-primary">RelaMudia</h1>
             <p class="text-sm text-gray-500 mt-2">Create a new account</p>
         </div>
@@ -29,7 +30,7 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium mb-1">Full Name</label>
                 <input type="text" name="name"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
                     placeholder="Your name" value="{{ old('name') }}">
                 @error('name')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
@@ -39,7 +40,7 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium mb-1">Email</label>
                 <input type="email" name="email"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
                     placeholder="you@example.com" value="{{ old('email') }}">
                 @error('email')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
@@ -49,8 +50,8 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium mb-1">Password</label>
                 <input type="password" name="password"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
-                    placeholder="••••••••">
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    placeholder="••••••••" autocomplete="off">
                 @error('password')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
                 @enderror
@@ -59,8 +60,8 @@
             <div class="mb-6">
                 <label class="block text-sm font-medium mb-1">Confirm Password</label>
                 <input type="password" name="password_confirmation"
-                    class="p-2 w-full rounded-lg border-2 border-primary focus:outline-primary-400 focus:ring-primary-600"
-                    placeholder="••••••••">
+                    class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
+                    placeholder="••••••••" autocomplete="off">
                 @error('password_confirmation')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
                 @enderror

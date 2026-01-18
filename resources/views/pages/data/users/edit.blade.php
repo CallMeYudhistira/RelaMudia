@@ -1,23 +1,6 @@
 <x-layout>
     <x-slot:title>Update | Users</x-slot:title>
 
-    @if ($errors->any())
-        <div class="fixed top-4 right-4 z-50">
-            <div class="rounded-lg bg-red-600 px-4 py-3 text-white shadow-lg max-w-md">
-                <div class="flex items-start gap-3">
-                    <i class="bx bx-error-circle text-xl mt-0.5"></i>
-                    <div class="text-sm">
-                        <ul class="list-disc pl-4 space-y-1">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="py-6">
         <div class="mx-auto max-w-7xl">
 

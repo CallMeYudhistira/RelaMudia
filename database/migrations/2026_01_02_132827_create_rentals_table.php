@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('start_date');
             $table->date('end_date');
-            $table->decimal('total_price', 12, 2);
+            $table->integer('total_price');
             $table->enum('status', [
                 'pending',
                 'paid',

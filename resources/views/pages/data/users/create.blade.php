@@ -1,23 +1,6 @@
 <x-layout>
     <x-slot:title>Create | Users</x-slot:title>
 
-    @if ($errors->any())
-        <div class="fixed top-4 right-4 z-50">
-            <div class="rounded-lg bg-red-600 px-4 py-3 text-white shadow-lg max-w-md">
-                <div class="flex items-start gap-3">
-                    <i class="bx bx-error-circle text-xl mt-0.5"></i>
-                    <div class="text-sm">
-                        <ul class="list-disc pl-4 space-y-1">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="py-6">
         <div class="mx-auto max-w-7xl">
 
@@ -76,7 +59,7 @@
                                 </span>
                                 <select name="role" id="role" required
                                     class="block w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-10 pr-10 text-gray-900 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none appearance-none">
-                                    <option value="" disabled selected>Pilih Role</option>
+                                    <option value="" disabled selected>Pilih hak akses</option>
                                     <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
                                 </select>

@@ -48,7 +48,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        return redirect()->route('users.index')->with('success', 'Data Berhasil Ditambah!');
+        return redirect()->route('users.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -89,7 +89,7 @@ class UserController extends Controller
         }
         $user->update($data);
 
-        return redirect()->route('users.index')->with('success', 'Data Berhasil Diubah!');
+        return redirect()->route('users.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -98,6 +98,6 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         User::destroy($id);
-        return redirect()->route('users.index')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('users.index')->with('success', 'Data berhasil dihapus!');
     }
 }

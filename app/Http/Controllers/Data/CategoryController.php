@@ -41,7 +41,7 @@ class CategoryController extends Controller
             'name' => 'required|string',
         ]));
 
-        return redirect()->route('categories.index')->with('success', 'Data Berhasil Ditambah!');
+        return redirect()->route('categories.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
             'name' => 'required|string',
         ]));
 
-        return redirect()->route('categories.index')->with('success', 'Data Berhasil Diubah!');
+        return redirect()->route('categories.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -80,6 +80,6 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
 
-        return redirect()->route('categories.index')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('categories.index')->with('success', 'Data berhasil dihapus!');
     }
 }

@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->foreignId('rental_id')->constrained()->cascadeOnDelete();
             $table->foreignId('multimedia_item_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
-            $table->decimal('price', 12, 2);
-            $table->decimal('subtotal', 12, 2);
+            $table->integer('price');
+            $table->integer('subtotal');
             $table->timestamps();
         });
     }
