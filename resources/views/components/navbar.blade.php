@@ -1,4 +1,4 @@
-<header class="bg-white shadow-sm">
+<header class="bg-white shadow-sm" x-data="{ openLogout: false }">
     <div class="max-w-7xl mx-auto h-20 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <img src="{{ asset('favicon.svg') }}" class="w-12 h-12 object-contain" alt="Logo">
@@ -24,10 +24,8 @@
                 <a href="{{ route('login') }}" class="bg-teal-600 text-white px-5 py-2 rounded-lg text-sm hover:bg-teal-700 transition">Get Started</a>
             @endguest
             @auth
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="bg-red-600 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-700 transition" onclick="return confirm('Yakin Ingin Logout?')">Logout</button>
-                </form>
+                <button @click="openLogout = true;" class="bg-red-600 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-700 transition">Logout</button>
+                @include('components.logout')
             @endauth
         </div>
     </div>
