@@ -12,8 +12,8 @@
                     <form action="{{ route('items.index') }}" method="GET" class="flex items-center gap-2">
                         <div class="relative">
                             <i class="bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
-                            <input type="text" name="search" placeholder="Cari item..."
-                                value="{{ $search ?? '' }}" autocomplete="off"
+                            <input type="text" name="search" placeholder="Cari item..." value="{{ $search ?? '' }}"
+                                autocomplete="off"
                                 class="w-64 rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500">
                         </div>
                         <button type="submit"
@@ -45,14 +45,12 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($items as $i => $item)
-                            @php
-                                $filename = $item->image ?? 'default.png';
-                            @endphp
                                 {{-- Kita definisikan x-data di level TR agar mencakup tombol aksi dan modal --}}
                                 <tr class="hover:bg-gray-50" x-data="{ openDelete: false, openMenu: false }">
                                     <td class="px-4 py-3 text-center w-5">{{ $i + 1 }}</td>
                                     <td class="px-4 py-3 font-medium text-gray-800">
-                                        <img src="{{ asset('image/items/' . $filename ) }}" alt="Foto Item" class="img-fluid w-12 object-contain">
+                                        <img src="{{ asset($item->image) }}" alt="Foto Item"
+                                            class="img-fluid w-12 object-contain">
                                     </td>
                                     <td class="px-4 py-3 font-medium text-gray-800">{{ $item->name }}</td>
                                     <td class="px-4 py-3">
@@ -61,8 +59,12 @@
                                             {{ $item->category->name }}
                                         </span>
                                     </td>
-                                    <td class="px-4 py-3 text-gray-600">{{ $item->description }}</td>
-                                    <td class="px-4 py-3 text-gray-600">{{ 'Rp. ' . number_format($item->price_per_day, '0', ',', '.') }}</td>
+                                    <td class="px-4 py-3 text-gray-600 truncate max-w-[150px]"
+                                        title="{{ $item->description }}">
+                                        {{ $item->description }}
+                                    </td>
+                                    <td class="px-4 py-3 text-gray-600">
+                                        {{ 'Rp. ' . number_format($item->price_per_day, '0', ',', '.') }}</td>
                                     <td class="px-4 py-3 text-gray-600">{{ $item->stock }}</td>
                                     <td class="px-4 py-3 text-center relative w-10">
                                         <button @click="openMenu = !openMenu"

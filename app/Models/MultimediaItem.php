@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class MultimediaItem extends Model
@@ -15,6 +16,16 @@ class MultimediaItem extends Model
         'status',
         'image',
     ];
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) =>
+                $value
+                    ? asset('image/items/' . $value)
+                    : asset('image/items/default.png')
+        );
+    }
 
     public function category(){
         return $this->belongsTo(Category::class);

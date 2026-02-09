@@ -26,7 +26,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.user');
         }
 
         throw ValidationException::withMessages([
@@ -47,7 +47,7 @@ class AuthController extends Controller
         if($user){
             $request->session()->regenerate();
             Auth::login($user);
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.user');
         }
 
         throw ValidationException::withMessages([

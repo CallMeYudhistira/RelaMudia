@@ -30,7 +30,7 @@
             </div>
             <div class="mt-4 rounded-lg bg-gray-50 p-3">
                 <label class="text-xs font-semibold uppercase text-gray-400">Foto</label>
-                <img src="{{ asset('image/items/' . $filename ) }}" class="w-35 h-35 object-cover rounded-3 my-3">
+                <img src="{{ asset($item->pict) }}" class="w-35 h-35 object-cover rounded-3 my-3">
             </div>
         </div>
 

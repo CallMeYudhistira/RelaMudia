@@ -25,7 +25,8 @@
                                         </span>
                                         <input type="text" name="name" id="name" required
                                             class="block w-full rounded-xl border border-gray-300 bg-white py-2.5 pl-10 pr-3 text-gray-900 transition-all focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none"
-                                            placeholder="Contoh: Kamera Sony A7III" value="{{ old('name') }}" autocomplete="off">
+                                            placeholder="Contoh: Kamera Sony A7III" value="{{ old('name') }}"
+                                            autocomplete="off">
                                     </div>
                                 </div>
 
@@ -92,30 +93,21 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 gap-6">
-                            <div class="space-y-2">
-                                <label for="description" class="text-sm font-semibold text-gray-700">Deskripsi
-                                    Item</label>
-                                <textarea name="description" id="description" rows="4"
-                                    class="block w-full rounded-xl border border-gray-300 bg-white p-4 my-2 text-gray-900 transition-all focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none"
-                                    placeholder="Jelaskan kondisi barang, kelengkapan, dll..." autocomplete="off">{{ old('description') }}</textarea>
-                            </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
                             <div class="space-y-2" x-data="{ imagePreview: null }">
-                                <label class="text-sm font-semibold text-gray-700">Foto Item</label>
-
                                 <div class="flex flex-col gap-4 my-2">
-                                    <div class="flex items-center justify-center w-full">
-                                        <label for="image" /* Ubah 'h-32' menjadi 'w-full aspect-[16/9]' dan
-                                            hapus 'h-32' agar tinggi mengikuti rasio */
-                                            class="flex flex-col items-center justify-center w-full aspect-[16/9] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-teal-50 hover:border-teal-400 transition-all overflow-hidden relative">
+                                    <div class="flex items-center w-full">
+                                        <label for="image"
+                                            class="flex flex-col items-center justify-center w-full max-w-[340px] aspect-[4/5] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-teal-50 hover:border-teal-400 transition-all overflow-hidden relative">
 
                                             <div x-show="!imagePreview"
                                                 class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
                                                 <i class="bx bx-cloud-upload text-4xl text-gray-400 mb-2"></i>
-                                                <p class="text-xs text-gray-500">Klik untuk upload atau drag and drop
+                                                <p class="text-xs text-gray-500 px-2">Klik untuk upload atau drag and
+                                                    drop</p>
+                                                <p class="text-[10px] text-gray-400 uppercase mt-2 font-bold">Rasio 4:5
                                                 </p>
-                                                <p class="text-[10px] text-gray-400 uppercase mt-1">PNG, JPG atau WEBP</p>
                                             </div>
 
                                             <template x-if="imagePreview">
@@ -134,12 +126,12 @@
                                             <input type="file" name="image" id="image" accept="image/*"
                                                 class="hidden"
                                                 @change="
-                                                const file = $event.target.files[0];
-                                                if (file) {
-                                                    const reader = new FileReader();
-                                                    reader.onload = (e) => { imagePreview = e.target.result; };
-                                                    reader.readAsDataURL(file);
-                                                }
+                                                    const file = $event.target.files[0];
+                                                    if (file) {
+                                                        const reader = new FileReader();
+                                                        reader.onload = (e) => { imagePreview = e.target.result; };
+                                                        reader.readAsDataURL(file);
+                                                    }
                                                 " />
                                         </label>
                                     </div>
@@ -147,11 +139,19 @@
                                     <template x-if="imagePreview">
                                         <button type="button"
                                             @click="imagePreview = null; document.getElementById('image').value = ''"
-                                            class="text-xs font-semibold text-red-600 hover:text-red-700 flex items-center justify-center gap-1">
+                                            class="text-xs font-semibold text-red-600 hover:text-red-700 flex items-center justify-start gap-1 ml-1">
                                             <i class="bx bx-trash"></i> Hapus Foto
                                         </button>
                                     </template>
                                 </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="description" class="text-sm font-semibold text-gray-700">Deskripsi
+                                    Item</label>
+                                <textarea name="description" id="description"
+                                    class="block w-full h-[320px] lg:h-[400px] rounded-xl border border-gray-300 bg-white p-4 my-2 text-gray-900 transition-all focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none resize-none"
+                                    placeholder="Jelaskan kondisi barang, kelengkapan, dll..." autocomplete="off">{{ old('description') }}</textarea>
                             </div>
                         </div>
                     </div>

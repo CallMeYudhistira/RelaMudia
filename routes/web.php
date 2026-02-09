@@ -13,41 +13,44 @@ use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('dashboard.user');
 });
-Route::get('/dashboard', HomeController::class)->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'user'])->name('dashboard.user');
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::prefix('/data')->group(function(){
-        Route::resource('users', UserController::class);
-        Route::resource('items', ItemController::class);
-        Route::resource('categories', CategoryController::class);
-        Route::redirect('/', route('users.index'))->name('data');
+    Route::prefix('/admin')->middleware('role:admin')->group(function () {
+        Route::get('/dashboard', [HomeController::class, 'admin'])->name('dashboard.admin');
+        Route::prefix('/data')->group(function () {
+            Route::resource('users', UserController::class);
+            Route::resource('items', ItemController::class);
+            Route::resource('categories', CategoryController::class);
+            Route::redirect('/', route('users.index'))->name('data');
+        });
     });
 
-    Route::prefix('/transaction')->group(function(){
+    Route::prefix('/transaction')->group(function () {
         Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
     });
 
-    Route::prefix('/profile')->group(function(){
+    Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     });
 
-    Route::prefix('/report')->group(function(){
+    Route::prefix('/report')->group(function () {
         Route::get('/', [ReportController::class, 'index'])->name('report.index');
     });
 
-    Route::prefix('/items')->group(function(){
+    Route::prefix('/items')->group(function () {
         Route::get('/', [\App\Http\Controllers\ItemController::class, 'index'])->name('items.list');
     });
 
-    Route::prefix('/payment')->group(function(){
+    Route::prefix('/payment')->group(function () {
         Route::get('/', [PaymentController::class, 'index'])->name('payment.index');
     });
 
-    Route::prefix('/carts')->group(function(){
+    Route::prefix('/carts')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('carts.index');
     });
 });
