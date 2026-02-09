@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Data\CategoryController;
 use App\Http\Controllers\Data\ItemController;
 use App\Http\Controllers\HomeController;
@@ -44,6 +45,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/payment')->group(function(){
         Route::get('/', [PaymentController::class, 'index'])->name('payment.index');
+    });
+
+    Route::prefix('/carts')->group(function(){
+        Route::get('/', [CartController::class, 'index'])->name('carts.index');
     });
 });
 

@@ -23,8 +23,8 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-2 bg-gray-50 px-6 py-4 sm:flex-row-reverse">
-            <form action="{{ route('logout') }}" method="POST" class="w-full sm:w-auto">
+        <div class="flex flex-col bg-gray-50 px-6 py-4 sm:flex-row justify-between">
+            <form action="{{ route('logout') }}" method="POST" class="w-full m-2">
                 @csrf
                 <button type="submit"
                     class="w-full rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700 transition-all active:scale-95">
@@ -32,7 +32,7 @@
                 </button>
             </form>
             <button @click="openLogout = false" type="button"
-                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-all sm:w-auto">
+                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-all m-2">
                 Batal
             </button>
         </div>
