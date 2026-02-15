@@ -22,24 +22,25 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/admin')->middleware('role:admin')->group(function () {
         Route::get('/dashboard', [HomeController::class, 'admin'])->name('dashboard.admin');
+
         Route::prefix('/data')->group(function () {
             Route::resource('users', UserController::class);
             Route::resource('items', ItemController::class);
             Route::resource('categories', CategoryController::class);
             Route::redirect('/', route('users.index'))->name('data');
         });
-    });
 
-    Route::prefix('/transaction')->group(function () {
-        Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+        Route::prefix('/report')->group(function () {
+            Route::get('/', [ReportController::class, 'index'])->name('report.index');
+        });
+
+        Route::prefix('/transaction')->group(function () {
+            Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+        });
     });
 
     Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-    });
-
-    Route::prefix('/report')->group(function () {
-        Route::get('/', [ReportController::class, 'index'])->name('report.index');
     });
 
     Route::prefix('/items')->group(function () {

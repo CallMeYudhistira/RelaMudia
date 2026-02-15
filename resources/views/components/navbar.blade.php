@@ -1,23 +1,30 @@
 <header
-    x-data="{ scrolled: false, openLogout: false }"
+    x-data="{
+        scrolled: false,
+        openLogout: false,
+        isAdminPage: {{ request()->is('admin*') ? 'true' : 'false' }}
+    }"
     x-init="window.onscroll = () => { scrolled = window.pageYOffset > 20 }"
-    :class="scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'"
+    /* Jika halaman admin, paksa bg-white. Jika bukan, gunakan efek transparan-blur */
+    :class="isAdminPage ? 'bg-white border-b border-gray-100 shadow-sm' : (scrolled ? 'bg-white/70 backdrop-blur-lg border-b border-teal-50 shadow-sm' : 'bg-transparent')"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
     <div class="max-w-7xl mx-auto h-20 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <img src="{{ asset('image/icon.png') }}" class="w-12 h-12 object-contain" alt="Logo">
-            <h1 class="text-2xl font-bold tracking-tight" :class="scrolled ? 'text-teal-600' : 'text-teal-500'">RelaMudia</h1>
+            <h1 class="text-2xl font-bold tracking-tight"
+                :class="(scrolled || isAdminPage) ? 'text-teal-600' : 'text-teal-500'">
+                RelaMudia
+            </h1>
         </div>
 
         <nav class="hidden md:flex space-x-8 text-sm font-medium">
             @php
-                // Menentukan link berdasarkan role
                 $isAdmin = isset(auth()->user()->role) && auth()->user()->role == 'admin';
             @endphp
 
             @if ($isAdmin)
-                <x-nav-link class="hover:text-teal-600 transition-colors" href="{{ route('dashboard.admin') }}" :active="request()->is('admin/dashboard/admin*')">Dashboard</x-nav-link>
+                <x-nav-link class="hover:text-teal-600 transition-colors" href="{{ route('dashboard.admin') }}" :active="request()->is('admin/dashboard*')">Dashboard</x-nav-link>
                 <x-nav-link class="hover:text-teal-600 transition-colors" href="{{ route('data') }}" :active="request()->is('admin/data*')">Data</x-nav-link>
                 <x-nav-link class="hover:text-teal-600 transition-colors" href="{{ route('transaction.index') }}" :active="request()->is('admin/transaction*')">Transaction</x-nav-link>
                 <x-nav-link class="hover:text-teal-600 transition-colors" href="{{ route('report.index') }}" :active="request()->is('admin/report*')">Report</x-nav-link>

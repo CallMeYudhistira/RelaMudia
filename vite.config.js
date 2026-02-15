@@ -10,4 +10,18 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    // server: {
+    //     host: true,
+    //     port: 5173,
+    //     strictPort: true,
+
+    //     allowedHosts: [
+    //         'kimiko-chromic-nonmelodiously.ngrok-free.dev',
+    //     ],
+
+    //     hmr: {
+    //         host: 'kimiko-chromic-nonmelodiously.ngrok-free.dev',
+    //         protocol: 'wss',
+    //     },
+    // },
 });

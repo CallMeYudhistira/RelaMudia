@@ -13,11 +13,17 @@ class HomeController extends Controller
         return view('pages.dashboard.admin');
     }
 
-    public function user()
+    public function user(Request $request)
     {
-        $categories = Category::limit(3)->get();
-        $items = MultimediaItem::limit(3)->get();
+        $category_id = $request->category_id;
 
-        return view('pages.dashboard.user', compact('categories', 'items'));
+        $query = MultimediaItem::query();
+        if ($category_id) {
+            $query->where('category_id', $category_id);
+        }
+        $categories = Category::limit(3)->get();
+        $items = $query->limit(15)->get();
+
+        return view('pages.dashboard.user', compact('categories', 'items', 'category_id'));
     }
 }
