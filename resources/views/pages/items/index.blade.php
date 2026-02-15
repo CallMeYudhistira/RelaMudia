@@ -27,7 +27,8 @@
                             name="category_id" onchange="submitForm();">
                             <option value="">Semua Kategori</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $category_id == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id }}"
+                                    {{ $category_id == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}</option>
                             @endforeach
                         </select>
@@ -40,36 +41,40 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 @forelse ($items as $item)
                     <div class="group cursor-pointer">
-                        <div
-                            class="relative aspect-[4/5] overflow-hidden bg-teal-50/50 rounded-3xl border border-teal-100 mb-5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-teal-600/5 group-hover:-translate-y-1">
-                            <img src="{{ $item->image }}"
-                                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                alt="{{ $item->name }}">
-
+                        <a href="{{ route('items.detail', $item->id) }}">
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-teal-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
+                                class="relative aspect-[4/5] overflow-hidden bg-teal-50/50 rounded-3xl border border-teal-100 mb-5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-teal-600/5 group-hover:-translate-y-1">
+                                <img src="{{ $item->image }}"
+                                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    alt="{{ $item->name }}">
 
-                        <div class="flex justify-between items-start px-2">
-                            <div class="max-w-[65%]">
-                                <h3
-                                    class="font-medium text-slate-800 text-lg group-hover:text-teal-600 transition-colors leading-tight mb-1">
-                                    {{ $item->name }}
-                                </h3>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                                    <p class="text-[11px] font-bold text-teal-600 uppercase tracking-wider">Tersedia</p>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-teal-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <p class="text-[10px] text-slate-400 font-medium uppercase tracking-tighter">Per Hari
-                                </p>
-                                <span class="text-teal-600 font-medium text-lg leading-none">
-                                    Rp{{ number_format($item->price_per_day, 0, ',', '.') }}
-                                </span>
+
+                            <div class="flex justify-between items-start px-2">
+                                <div class="max-w-[65%]">
+                                    <h3
+                                        class="font-medium text-slate-800 text-lg group-hover:text-teal-600 transition-colors leading-tight mb-1">
+                                        {{ $item->name }}
+                                    </h3>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                                        <p class="text-[11px] font-bold text-teal-600 uppercase tracking-wider">Stok:
+                                            {{ $item->stock }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] text-slate-400 font-medium uppercase tracking-tighter">Per
+                                        Hari
+                                    </p>
+                                    <span class="text-teal-600 font-medium text-lg leading-none">
+                                        Rp{{ number_format($item->price_per_day, 0, ',', '.') }}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @empty
                     <div class="col-span-full py-20 text-center">
@@ -79,15 +84,13 @@
                     </div>
                 @endforelse
             </div>
-
-            {{ $items->links('components.pagination') }}
         </div>
     </div>
 
     <script>
         const formFilter = document.getElementById('formFilter');
 
-        function submitForm(){
+        function submitForm() {
             formFilter.submit();
         }
     </script>

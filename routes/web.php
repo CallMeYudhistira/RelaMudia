@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/items')->group(function () {
         Route::get('/', [\App\Http\Controllers\ItemController::class, 'index'])->name('items.list');
+        Route::get('/detail/{id}', [\App\Http\Controllers\ItemController::class, 'detail'])->name('items.detail');
     });
 
     Route::prefix('/payment')->group(function () {

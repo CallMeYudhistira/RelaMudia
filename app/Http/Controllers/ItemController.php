@@ -23,8 +23,15 @@ class ItemController extends Controller
             $query->where('category_id', 'LIKE', "%{$category_id}%");
         }
 
-        $items = $query->with('category')->paginate(10)->withQueryString();
+        $items = $query->with('category')->get();
 
         return view('pages.items.index', compact('categories', 'items', 'search', 'category_id'));
+    }
+
+    public function detail($id)
+    {
+        $item = MultimediaItem::with('category')->find($id);
+
+        return view('pages.items.detail', compact('item'));
     }
 }

@@ -50,7 +50,8 @@
 
                 <div class="flex items-center gap-8">
                     <div class="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-widest mr-4">
-                        <a href="{{ route('dashboard.user', 'category_id=' . '#explore') }}" class="text-teal-600 {{ $category_id ? '' : 'border-b-2' }} border-teal-600 pb-1">Semua</a>
+                        <a href="{{ route('dashboard.user', 'category_id=' . '#explore') }}"
+                            class="text-teal-600 {{ $category_id ? '' : 'border-b-2' }} border-teal-600 pb-1">Semua</a>
                         @foreach ($categories as $category)
                             <a href="{{ route('dashboard.user', 'category_id=' . $category->id . '#explore') }}"
                                 class="text-slate-400 hover:text-teal-500 transition-all {{ $category->id == $category_id ? 'border-b-2' : '' }}">{{ $category->name }}</a>
@@ -75,30 +76,34 @@
                     @foreach ($items as $item)
                         <div class="swiper-slide h-auto">
                             <div class="group cursor-pointer">
-                                <div
-                                    class="relative aspect-[4/5] overflow-hidden bg-teal-50/50 rounded-3xl border border-teal-100 mb-5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-teal-600/5 group-hover:-translate-y-1">
-                                    <img src="{{ $item->image }}"
-                                        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        alt="{{ $item->name }}">
-                                </div>
+                                <a href="{{ route('items.detail', $item->id) }}">
+                                    <div
+                                        class="relative aspect-[4/5] overflow-hidden bg-teal-50/50 rounded-3xl border border-teal-100 mb-5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-teal-600/5 group-hover:-translate-y-1">
+                                        <img src="{{ $item->image }}"
+                                            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                            alt="{{ $item->name }}">
+                                    </div>
 
-                                <div class="flex justify-between items-start px-2">
-                                    <div>
-                                        <h3
-                                            class="font-bold text-slate-800 text-lg group-hover:text-teal-600 transition-colors">
-                                            {{ $item->name }}
-                                        </h3>
-                                        <p class="text-sm text-slate-400 truncate max-w-[150px]">
-                                            {{ $item->description }}</p>
+                                    <div class="flex justify-between items-start px-2">
+                                        <div>
+                                            <h3
+                                                class="font-bold text-slate-800 text-lg group-hover:text-teal-600 transition-colors">
+                                                {{ $item->name }}
+                                            </h3>
+                                            <p class="text-sm text-slate-400 truncate max-w-[150px]">
+                                                {{ $item->description }}</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p
+                                                class="text-[10px] text-slate-400 font-medium uppercase tracking-tighter">
+                                                Per
+                                                Hari</p>
+                                            <span class="text-teal-600 font-extrabold text-lg leading-none">
+                                                Rp{{ number_format($item->price_per_day, 0, ',', '.') }}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="text-right">
-                                        <p class="text-[10px] text-slate-400 font-medium uppercase tracking-tighter">Per
-                                            Hari</p>
-                                        <span class="text-teal-600 font-extrabold text-lg leading-none">
-                                            Rp{{ number_format($item->price_per_day, 0, ',', '.') }}
-                                        </span>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     @endforeach
@@ -106,21 +111,21 @@
                 <div class="swiper-pagination !-bottom-10"></div>
             </div>
 
-        <div
-            class="mt-24 p-12 bg-teal-50/50 rounded-[40px] flex flex-col md:flex-row items-center justify-between border border-teal-100 relative overflow-hidden">
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-teal-100/50 rounded-full blur-3xl"></div>
+            <div
+                class="mt-24 p-12 bg-teal-50/50 rounded-[40px] flex flex-col md:flex-row items-center justify-between border border-teal-100 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-teal-100/50 rounded-full blur-3xl"></div>
 
-            <div class="mb-6 md:mb-0 relative z-10">
-                <h4 class="text-2xl font-bold text-slate-800">Butuh bantuan memilih alat?</h4>
-                <p class="text-slate-500 mt-1">Tim ahli kami siap membantu mencarikan gear yang sesuai kebutuhan
-                    Anda.</p>
+                <div class="mb-6 md:mb-0 relative z-10">
+                    <h4 class="text-2xl font-bold text-slate-800">Butuh bantuan memilih alat?</h4>
+                    <p class="text-slate-500 mt-1">Tim ahli kami siap membantu mencarikan gear yang sesuai kebutuhan
+                        Anda.</p>
+                </div>
+                <a href="#"
+                    class="relative z-10 inline-flex items-center gap-2 bg-white border-2 border-teal-600 text-teal-600 px-10 py-4 rounded-full font-bold hover:bg-teal-600 hover:text-white transition-all duration-300 group shadow-lg shadow-teal-100">
+                    Hubungi CS
+                    <i class="bx bx-right-arrow-alt text-xl group-hover:translate-x-2 transition-transform"></i>
+                </a>
             </div>
-            <a href="#"
-                class="relative z-10 inline-flex items-center gap-2 bg-white border-2 border-teal-600 text-teal-600 px-10 py-4 rounded-full font-bold hover:bg-teal-600 hover:text-white transition-all duration-300 group shadow-lg shadow-teal-100">
-                Hubungi CS
-                <i class="bx bx-right-arrow-alt text-xl group-hover:translate-x-2 transition-transform"></i>
-            </a>
-        </div>
         </div>
 
         <script>
