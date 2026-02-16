@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Data\CategoryController;
 use App\Http\Controllers\Data\ItemController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\PaymentController;
@@ -41,6 +42,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::put('/edit', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     });
 
     Route::prefix('/items')->group(function () {
@@ -54,6 +57,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/carts')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('carts.index');
+    });
+
+    Route::prefix('/help')->group(function () {
+        Route::get('/', [HelpController::class, 'index'])->name('help.index');
     });
 });
 

@@ -15,7 +15,7 @@ class CartController extends Controller
 
         $carts = Cart::where('user_id', $user->id)->get();
 
-        return view('pages.carts', compact('carts'));
+        return view('pages.carts.index', compact('carts'));
     }
 
     public function store(Request $request)
@@ -60,7 +60,7 @@ class CartController extends Controller
 
     public function delete($id){
         Cart::destroy($id);
-        
+
         return redirect()->back();
     }
 }

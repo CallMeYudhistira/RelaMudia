@@ -47,19 +47,9 @@
                 <form action="#" method="POST" x-data="{ totalDays: 1 }">
                     @csrf
                     <div class="space-y-6">
-                        <div class="relative">
-                            <label class="text-[10px] uppercase text-slate-400 tracking-widest mb-2 block">Pilih Tanggal Sewa (Range)</label>
-                            <div class="relative group">
-                                <i class="bx bx-calendar absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-teal-600 transition-colors"></i>
-                                <input type="text" id="date_range" name="rental_range"
-                                    class="w-full pl-12 pr-4 py-4 bg-teal-50/30 border border-teal-100 rounded-2xl outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/5 transition-all text-slate-700 font-medium"
-                                    placeholder="Pilih rentang tanggal...">
-                            </div>
-                        </div>
-
                         <button type="submit"
-                                class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-sm uppercase tracking-[0.2em] hover:bg-teal-600 transition-all duration-300 shadow-xl shadow-slate-200">
-                            Konfirmasi Sewa Sekarang
+                                class="w-full bg-slate-900 text-white py-5 uppercase rounded-2xl font-bold text-sm tracking-[0.2em] hover:bg-teal-600 transition-all duration-300 shadow-xl shadow-slate-200">
+                            Masukan Keranjang
                         </button>
                     </div>
                 </form>
@@ -67,21 +57,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr("#date_range", {
-                mode: "range",
-                minDate: "today",
-                dateFormat: "d M Y",
-                disableMobile: "true",
-                locale: {
-                    rangeSeparator: " s/d "
-                },
-                onClose: function(selectedDates, dateStr, instance) {
-                    // Logika untuk menghitung hari bisa ditambahkan di sini
-                }
-            });
-        });
-    </script>
 </x-layout>

@@ -14,8 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800" x-data="{ openLogout: false }">
     <x-navbar />
+
+@include('components.logout')
 
     @if (request()->is('admin/data*'))
         <x-navbar-2 />
