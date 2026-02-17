@@ -10,7 +10,7 @@ class Payment extends Model
         'rental_id',
         'payment_method',
         'payment_reference',
-        'amount',
+        'payment_url',
         'status',
     ];
 

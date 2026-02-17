@@ -16,8 +16,6 @@ return new class extends Migration {
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->integer('price_per_day');
-            $table->integer('stock');
-            $table->enum('status', ['available', 'rented'])->default('available');
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -78,20 +78,6 @@
                                             placeholder="0" value="{{ old('price_per_day', $item->price_per_day) }}" autocomplete="off">
                                     </div>
                                 </div>
-
-                                <div class="space-y-2">
-                                    <label for="stock" class="text-sm font-semibold text-gray-700">Jumlah
-                                        Stok</label>
-                                    <div class="relative group my-2">
-                                        <span
-                                            class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 group-focus-within:text-teal-600 transition-colors">
-                                            <i class="bx bx-box text-lg"></i>
-                                        </span>
-                                        <input type="number" name="stock" id="stock" required
-                                            class="block w-full rounded-xl border border-gray-300 bg-white py-2.5 pl-10 pr-3 text-gray-900 transition-all focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none"
-                                            placeholder="0" value="{{ old('stock', $item->stock) }}" autocomplete="off">
-                                    </div>
-                                </div>
                             </div>
                         </div>
 

@@ -12,8 +12,6 @@ class MultimediaItem extends Model
         'category_id',
         'description',
         'price_per_day',
-        'stock',
-        'status',
         'image',
     ];
 

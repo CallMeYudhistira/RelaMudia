@@ -30,23 +30,10 @@
                     <p>{{ $item->description }}</p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6 mb-12 border-y border-gray-100 py-8">
-                    <div>
-                        <p class="text-[10px] uppercase text-slate-400 tracking-widest mb-1">Status</p>
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full {{ $item->status == 'available' ? 'bg-teal-500' : 'bg-red-500' }}"></span>
-                            <p class="text-sm font-bold text-slate-800 capitalize">{{ $item->status }}</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-[10px] uppercase text-slate-400 tracking-widest mb-1">Stok Alat</p>
-                        <p class="text-sm font-bold text-slate-800">{{ $item->stock }} Unit</p>
-                    </div>
-                </div>
-
-                <form action="#" method="POST" x-data="{ totalDays: 1 }">
+                <form action="{{ route('carts.store') }}" method="POST">
                     @csrf
                     <div class="space-y-6">
+                        <input type="hidden" name="multimedia_item_id" value="{{ $item->id }}">
                         <button type="submit"
                                 class="w-full bg-slate-900 text-white py-5 uppercase rounded-2xl font-bold text-sm tracking-[0.2em] hover:bg-teal-600 transition-all duration-300 shadow-xl shadow-slate-200">
                             Masukan Keranjang

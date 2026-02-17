@@ -53,11 +53,11 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/payment')->group(function () {
         Route::get('/', [PaymentController::class, 'index'])->name('payment.index');
+        Route::post('/', [TransactionController::class, 'store'])->name('transaction.store');
+        Route::get('/detail/{id}', [PaymentController::class, 'detail'])->name('payment.detail');
     });
 
-    Route::prefix('/carts')->group(function () {
-        Route::get('/', [CartController::class, 'index'])->name('carts.index');
-    });
+    Route::resource('carts', CartController::class);
 
     Route::prefix('/help')->group(function () {
         Route::get('/', [HelpController::class, 'index'])->name('help.index');
@@ -70,3 +70,5 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
     Route::get('/register', 'showRegister')->name('register');
     Route::post('/register/proses', 'register')->name('registerProcess');
 });
+
+Route::post('/midtrans/callback', [TransactionController::class, 'callback']);

@@ -60,9 +60,8 @@
                                         {{ $item->name }}
                                     </h3>
                                     <div class="flex items-center gap-1.5">
-                                        <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                                        <p class="text-[11px] font-bold text-teal-600 uppercase tracking-wider">Stok:
-                                            {{ $item->stock }}</p>
+                                        <p class="text-sm text-slate-400 truncate max-w-[150px]">
+                                            {{ $item->description }}</p>
                                     </div>
                                 </div>
                                 <div class="text-right">

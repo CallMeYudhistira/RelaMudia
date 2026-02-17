@@ -24,6 +24,7 @@ return new class extends Migration
                 'completed',
                 'cancelled'
             ])->default('pending');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

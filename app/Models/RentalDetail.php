@@ -10,7 +10,7 @@ class RentalDetail extends Model
         'rental_id',
         'multimedia_item_id',
         'quantity',
-        'price',
+        'price_per_day',
         'subtotal',
     ];
 

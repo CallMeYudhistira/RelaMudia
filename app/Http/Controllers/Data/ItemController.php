@@ -37,7 +37,6 @@ class ItemController extends Controller
             'category_id' => 'required|numeric',
             'description' => 'nullable|string',
             'price_per_day' => 'required|integer',
-            'stock' => 'required|integer',
             'image' => 'nullable|image',
         ]));
 
@@ -84,7 +83,6 @@ class ItemController extends Controller
             'category_id' => 'required|numeric',
             'description' => 'nullable|string',
             'price_per_day' => 'required|integer',
-            'stock' => 'required|integer',
         ]));
 
         $request->validate([

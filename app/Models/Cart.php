@@ -10,7 +10,7 @@ class Cart extends Model
         'user_id',
         'multimedia_item_id',
         'quantity',
-        'price',
+        'price_per_day',
         'subtotal',
     ];
 

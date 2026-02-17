@@ -13,9 +13,14 @@ class CartController extends Controller
     {
         $user = Auth::user();
 
-        $carts = Cart::where('user_id', $user->id)->get();
+        $carts = Cart::with('multimediaItem')->where('user_id', $user->id)->get();
 
         return view('pages.carts.index', compact('carts'));
+    }
+
+    public function create()
+    {
+
     }
 
     public function store(Request $request)
@@ -24,22 +29,34 @@ class CartController extends Controller
 
         $data = $request->validate([
             'multimedia_item_id' => 'required|numeric',
-            'quantity' => 'required|int|min:1',
         ]);
 
         $item = MultimediaItem::find($data['multimedia_item_id']);
-        $data['price'] = $item->price;
-        $data['subtotal'] = $data['price'] * $data['quantity'];
+        $data['quantity'] = 1;
+        $data['price_per_day'] = $item->price_per_day;
+        $data['subtotal'] = $data['price_per_day'] * $data['quantity'];
         $data['user_id'] = $user->id;
 
         $existedCart = Cart::where('user_id', $data['user_id'])->where('multimedia_item_id', $data['multimedia_item_id'])->first();
         if ($existedCart) {
+            $data['quantity'] = $existedCart->quantity + 1;
+            $data['subtotal'] = $data['price_per_day'] * $data['quantity'];
             $existedCart->update($data);
+        } else {
+            Cart::create($data);
         }
 
-        Cart::create($data);
+        return redirect()->back()->with('success', 'Menambahkan ke keranjang +1.');
+    }
 
-        return redirect()->back()->with('success', 'Menambahkan ke keranjang.');
+    public function show()
+    {
+
+    }
+
+    public function edit()
+    {
+
     }
 
     public function update(Request $request, $id)
@@ -52,13 +69,14 @@ class CartController extends Controller
 
         $cart = Cart::find($id);
         $cart->quantity = $data['quantity'];
-        $cart->subtotal = $cart->price * $cart->quantity;
+        $cart->subtotal = $cart->price_per_day * $cart->quantity;
         $cart->save();
 
         return redirect()->back();
     }
 
-    public function delete($id){
+    public function destroy($id)
+    {
         Cart::destroy($id);
 
         return redirect()->back();

@@ -6,6 +6,7 @@
     <title>{{ $title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -17,7 +18,7 @@
 <body class="bg-gray-50 text-gray-800" x-data="{ openLogout: false }">
     <x-navbar />
 
-@include('components.logout')
+    @include('components.logout')
 
     @if (request()->is('admin/data*'))
         <x-navbar-2 />

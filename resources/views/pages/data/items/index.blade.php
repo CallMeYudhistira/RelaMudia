@@ -39,7 +39,6 @@
                                 <th class="px-4 py-3 text-left font-semibold">Kategori</th>
                                 <th class="px-4 py-3 text-left font-semibold">Deskripsi</th>
                                 <th class="px-4 py-3 text-left font-semibold">Harga Per Hari</th>
-                                <th class="px-4 py-3 text-left font-semibold">Stok</th>
                                 <th class="px-4 py-3 text-center font-semibold">Aksi</th>
                             </tr>
                         </thead>
@@ -65,7 +64,6 @@
                                     </td>
                                     <td class="px-4 py-3 text-gray-600">
                                         {{ 'Rp. ' . number_format($item->price_per_day, '0', ',', '.') }}</td>
-                                    <td class="px-4 py-3 text-gray-600">{{ $item->stock }}</td>
                                     <td class="px-4 py-3 text-center relative w-10">
                                         <button @click="openMenu = !openMenu"
                                             class="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">

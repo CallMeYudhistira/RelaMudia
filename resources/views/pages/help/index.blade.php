@@ -89,16 +89,6 @@
                             Kirim Email <i class="bx bx-right-arrow-alt text-lg"></i>
                         </span>
                     </a>
-
-                    <div class="bg-slate-900 p-6 rounded-3xl text-white shadow-xl shadow-slate-200">
-                        <div class="flex items-center gap-3 mb-4">
-                            <i class="bx bx-map-pin text-teal-400 text-xl"></i>
-                            <h4 class="font-bold">Lokasi Studio</h4>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Jl. Multimedia Raya No. 12, Sleman, Yogyakarta 55281
-                        </p>
-                    </div>
                 </div>
 
             </div>
