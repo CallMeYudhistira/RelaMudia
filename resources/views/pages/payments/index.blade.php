@@ -75,10 +75,10 @@
                                 </a>
 
                                 @if($transaction->status == 'pending')
-                                    <a href="{{ $transaction->payment_url }}"
+                                    <button onclick="pay('{{ $transaction->snap_token }}')"
                                             class="flex-1 lg:flex-none text-center px-6 py-3 bg-teal-50 text-teal-600 border border-teal-100 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-teal-600 hover:text-white transition-all">
                                         Bayar
-                                    </a>
+                                    </button>
                                 @endif
                             </div>
 
@@ -98,4 +98,30 @@
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        function pay(snapToken) {
+            window.snap.pay(snapToken, {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    window.location.reload();
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    window.location.reload();
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    window.location.reload();
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('You closed the popup without finishing the payment');
+                }
+            })
+        }
+    </script>
 </x-layout>

@@ -116,6 +116,7 @@ class TransactionController extends Controller
                 'payment_method' => null,
                 'payment_reference' => $orderId,
                 'payment_url' => $transaction->redirect_url,
+                'snap_token' => $transaction->token,
                 'status' => 'pending',
             ]);
 
@@ -125,6 +126,29 @@ class TransactionController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'Gagal memproses pembayaran.');
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $rental = Rental::findOrFail($id);
+
+        if (in_array($rental->status, ['completed', 'cancelled'])) {
+            return redirect()->back()->with('error', 'Transaksi yang sudah selesai atau dibatalkan tidak dapat diubah lagi.');
+        }
+
+        $request->validate([
+            'status' => 'required|in:paid,ongoing,completed,cancelled',
+            'note' => $request->status === 'cancelled' ? 'required|string' : 'nullable|string',
+        ], [
+            'note.required' => 'Catatan wajib diisi jika status dibatalkan.'
+        ]);
+
+        $rental->update([
+            'status' => $request->status,
+            'note' => $request->note,
+        ]);
+
+        return redirect()->back()->with('success', 'Transaksi berhasil diperbarui.');
     }
 
     public function callback(Request $request)
@@ -170,7 +194,18 @@ class TransactionController extends Controller
                     'status' => 'paid'
                 ]);
 
-                $payment->rental->user->carts()->delete();
+                // Hapus item keranjang yang sesuai dengan item yang disewa
+                $itemIds = $payment->rental->details->pluck('multimedia_item_id');
+                $payment->rental->user->carts()->whereIn('multimedia_item_id', $itemIds)->delete();
+                
+                \Log::info("Payment success for Order ID: $orderId");
+            }
+
+            if ($status == 'pending') {
+                $payment->update([
+                    'payment_method' => $paymentType
+                ]);
+                \Log::info("Payment pending for Order ID: $orderId");
             }
 
             if (in_array($status, ['expire', 'cancel', 'deny'])) {
@@ -180,6 +215,7 @@ class TransactionController extends Controller
                 $payment->rental->update([
                     'status' => 'cancelled'
                 ]);
+                \Log::info("Payment failed/cancelled for Order ID: $orderId, Status: $status");
             }
 
             DB::commit();

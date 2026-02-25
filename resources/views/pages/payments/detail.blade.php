@@ -23,52 +23,111 @@
                         <i class="bx bx-printer"></i> Cetak Invoice
                     </button>
                     @if ($payment->status == 'pending')
-                        <a href="{{ $payment->payment_url }}"
+                        <button onclick="pay('{{ $payment->snap_token }}')"
                             class="px-5 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-teal-500/20 hover:bg-teal-700 transition-all">
                             Bayar Sekarang
-                        </a>
+                        </button>
                     @endif
                 </div>
             </div>
+
+            <script type="text/javascript">
+                function pay(snapToken) {
+                    window.snap.pay(snapToken, {
+                        onSuccess: function(result) {
+                            console.log(result);
+                            window.location.reload();
+                        },
+                        onPending: function(result) {
+                            console.log(result);
+                            window.location.reload();
+                        },
+                        onError: function(result) {
+                            console.log(result);
+                            window.location.reload();
+                        },
+                        onClose: function() {
+                            alert('You closed the popup without finishing the payment');
+                        }
+                    })
+                }
+            </script>
 
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm mb-8">
                 <h3 class="font-bold text-slate-800 mb-8 flex items-center gap-2">
                     <i class="bx bx-time-five text-teal-600 text-xl"></i> Timeline Penyewaan
                 </h3>
 
+                @php
+                    $status = $payment->rental->status;
+                    $isPaid = in_array($status, ['paid', 'ongoing', 'completed']);
+                    $isOngoing = in_array($status, ['ongoing', 'completed']);
+                    $isCompleted = $status === 'completed';
+
+                    $progressWidth = '0%';
+                    if ($status === 'ongoing') {
+                        $progressWidth = '50%';
+                    } elseif ($status === 'completed') {
+                        $progressWidth = '100%';
+                    }
+                @endphp
+
                 <div class="relative">
-                    <div class="absolute top-5 left-0 w-full h-0.5 bg-slate-100 hidden md:block"></div>
+                    <div class="absolute top-5 left-[16.6%] right-[16.6%] h-0.5 bg-slate-100 hidden md:block">
+                        <div class="absolute top-0 left-0 h-full bg-teal-500 transition-all duration-500"
+                            style="width: {{ $progressWidth }}"></div>
+                    </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                         <div class="flex flex-row md:flex-col items-start md:items-center gap-4 md:text-center group">
-                            <div class="w-10 h-10 rounded-full bg-teal-500 border-4 border-white shadow-md z-10 flex-shrink-0"></div>
+                            <div
+                                class="w-10 h-10 rounded-full {{ $isPaid ? 'bg-teal-500' : 'bg-slate-200' }} border-4 border-white shadow-md z-10 flex-shrink-0 transition-colors duration-300">
+                            </div>
                             <div>
-                                <p class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Pengambilan</p>
-                                <p class="text-sm text-slate-500">{{ \Carbon\Carbon::parse($payment->rental->start_date)->format('d M Y') }}</p>
-                                <p class="text-[10px] text-teal-600 font-bold uppercase mt-1">Gudang RelaMudia</p>
+                                <p
+                                    class="text-xs font-black {{ $isPaid ? 'text-slate-800' : 'text-slate-400' }} uppercase tracking-wider mb-1">
+                                    Pengambilan</p>
+                                <p class="text-sm text-slate-500">
+                                    {{ \Carbon\Carbon::parse($payment->rental->start_date)->format('d M Y') }}</p>
+                                <p
+                                    class="text-[10px] {{ $isPaid ? 'text-teal-600' : 'text-slate-400' }} font-bold uppercase mt-1">
+                                    Gudang RelaMudia</p>
                             </div>
                         </div>
 
                         <div class="flex flex-row md:flex-col items-start md:items-center gap-4 md:text-center group">
-                            <div class="w-10 h-10 rounded-full bg-slate-200 border-4 border-white shadow-md z-10 flex-shrink-0"></div>
+                            <div
+                                class="w-10 h-10 rounded-full {{ $isOngoing ? 'bg-teal-500' : 'bg-slate-200' }} border-4 border-white shadow-md z-10 flex-shrink-0 transition-colors duration-300">
+                            </div>
                             <div>
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-wider mb-1">Masa Sewa</p>
+                                <p
+                                    class="text-xs font-black {{ $isOngoing ? 'text-slate-800' : 'text-slate-400' }} uppercase tracking-wider mb-1">
+                                    Masa Sewa</p>
                                 @php
                                     $start = \Carbon\Carbon::parse($payment->rental->start_date);
                                     $end = \Carbon\Carbon::parse($payment->rental->end_date);
                                     $total_days = $start->diffInDays($end) + 1;
                                 @endphp
                                 <p class="text-sm text-slate-500 font-bold">{{ $total_days }} Hari Penuh</p>
-                                <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Durasi Pemakaian</p>
+                                <p
+                                    class="text-[10px] {{ $isOngoing ? 'text-teal-600' : 'text-slate-400' }} font-bold uppercase mt-1">
+                                    Durasi Pemakaian</p>
                             </div>
                         </div>
 
                         <div class="flex flex-row md:flex-col items-start md:items-center gap-4 md:text-center group">
-                            <div class="w-10 h-10 rounded-full bg-slate-200 border-4 border-white shadow-md z-10 flex-shrink-0"></div>
+                            <div
+                                class="w-10 h-10 rounded-full {{ $isCompleted ? 'bg-teal-500' : 'bg-slate-200' }} border-4 border-white shadow-md z-10 flex-shrink-0 transition-colors duration-300">
+                            </div>
                             <div>
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-wider mb-1">Pengembalian</p>
-                                <p class="text-sm text-slate-500">{{ \Carbon\Carbon::parse($payment->rental->end_date)->format('d M Y') }}</p>
-                                <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Maks. Pukul 21:00</p>
+                                <p
+                                    class="text-xs font-black {{ $isCompleted ? 'text-slate-800' : 'text-slate-400' }} uppercase tracking-wider mb-1">
+                                    Pengembalian</p>
+                                <p class="text-sm text-slate-500">
+                                    {{ \Carbon\Carbon::parse($payment->rental->end_date)->format('d M Y') }}</p>
+                                <p
+                                    class="text-[10px] {{ $isCompleted ? 'text-teal-600' : 'text-slate-400' }} font-bold uppercase mt-1">
+                                    Maks. Pukul 21:00</p>
                             </div>
                         </div>
                     </div>
@@ -158,7 +217,7 @@
                             </h3>
                             <div class="p-4 bg-amber-50/50 rounded-2xl mb-4 border border-amber-100/50">
                                 <p class="text-xs text-amber-800 leading-relaxed italic">
-                                    "{{ $payment->rental->notes ?? 'Tidak ada catatan khusus.' }}"
+                                    "{{ $payment->rental->note ?? 'Tidak ada catatan khusus.' }}"
                                 </p>
                             </div>
                         </div>
@@ -238,13 +297,6 @@
                                     @endphp
 
                                     {{ $method }}
-                                </span>
-                            </div>
-
-                            <div class="flex justify-between text-sm text-slate-500">
-                                <span>Biaya Admin</span>
-                                <span class="font-bold text-slate-800 text-right">
-                                    Rp {{ number_format(0, 0, ',', '.') }}
                                 </span>
                             </div>
 

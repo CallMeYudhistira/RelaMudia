@@ -11,6 +11,7 @@ class Payment extends Model
         'payment_method',
         'payment_reference',
         'payment_url',
+        'snap_token',
         'status',
     ];
 

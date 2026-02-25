@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
 
         Route::prefix('/transaction')->group(function () {
             Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+            Route::put('/{id}', [TransactionController::class, 'update'])->name('transaction.update');
         });
     });
 

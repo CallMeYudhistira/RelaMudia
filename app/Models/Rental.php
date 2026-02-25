@@ -12,6 +12,7 @@ class Rental extends Model
         'end_date',
         'total_price',
         'status',
+        'note',
     ];
 
     public function user()

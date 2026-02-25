@@ -8,7 +8,7 @@
 
 @theme {
     /* Font */
-    --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Google Sans", "Instrument Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 
     /* Primary color (Teal) */
     --color-primary: #267f7c;
