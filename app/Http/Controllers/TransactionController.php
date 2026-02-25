@@ -8,15 +8,28 @@ use App\Models\RentalDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Midtrans\Notification;
 use Midtrans\Snap;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.transactions.index');
+        $status = $request->status;
+        $start = $request->start_date;
+        $end = $request->end_date;
+
+        $query = Rental::query();
+
+        if($status){
+            $query = $query->where('status', 'LIKE', "%{$status}%");
+        }
+        if($start && $end){
+            $query = $query->whereBetween('created_at', [$start, $end]);
+        }
+
+        $transactions = $query->with('user')->get();
+        return view('pages.transactions.index', compact('transactions', 'status', 'start', 'end'));
     }
 
     public function store(Request $request)

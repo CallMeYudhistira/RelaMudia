@@ -4,7 +4,7 @@
 }" x-init="window.onscroll = () => { scrolled = window.pageYOffset > 20 }"
     :class="isAdminPage ? 'bg-white border-b border-gray-100 shadow-sm' : (scrolled ?
         'bg-white/70 backdrop-blur-lg border-b border-teal-50 shadow-sm' : 'bg-transparent')"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white">
     <div class="max-w-7xl mx-auto h-20 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <img src="{{ asset('image/icon.png') }}" class="w-12 h-12 object-contain" alt="Logo">

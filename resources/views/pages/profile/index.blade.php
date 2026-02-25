@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Profil Saya | RelaMudia</x-slot:title>
 
-    <div class="bg-slate-50 min-h-screen pt-8 pb-20">
+    <div class="bg-white min-h-screen pt-8 pb-20">
         <div class="max-w-4xl mx-auto px-6">
 
             <h1 class="text-3xl font-extrabold text-slate-900 mb-2">Pengaturan Akun</h1>

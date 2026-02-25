@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Riwayat Transaksi | RelaMudia</x-slot:title>
 
-    <div class="bg-slate-50 min-h-screen pt-8 pb-20">
+    <div class="bg-white min-h-screen pt-8 pb-20">
         <div class="max-w-5xl mx-auto px-6">
 
             <nav class="flex items-center gap-2 text-sm text-slate-400 mb-6">
@@ -24,7 +24,6 @@
                     <a class="px-4 py-2 rounded-xl {{ $status ? $unactive : $active }}" href="{{ route('payment.index', 'status=') }}">Semua</a>
                     <a class="px-4 py-2 rounded-xl {{ 'pending' == $status ? $active : $unactive }}" href="{{ route('payment.index', 'status=' . 'pending') }}"">Menunggu</a>
                     <a class="px-4 py-2 rounded-xl {{ 'success' == $status ? $active : $unactive }}" href="{{ route('payment.index', 'status=' . 'success') }}"">Selesai</a>
-                    <a class="px-4 py-2 rounded-xl {{ 'refund' == $status ? $active : $unactive }}" href="{{ route('payment.index', 'status=' . 'refund') }}"">Refund</a>
                     <a class="px-4 py-2 rounded-xl {{ 'failed' == $status ? $active : $unactive }}" href="{{ route('payment.index', 'status=' . 'failed') }}"">Gagal</a>
                 </div>
             </div>
@@ -44,8 +43,6 @@
                                         <span class="text-[10px] font-bold uppercase px-3 py-1 bg-amber-50 text-amber-600 rounded-full border border-amber-100">Menunggu Pembayaran</span>
                                     @elseif($transaction->status == 'success')
                                         <span class="text-[10px] font-bold uppercase px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">Berhasil</span>
-                                    @elseif($transaction->status == 'refund')
-                                        <span class="text-[10px] font-bold uppercase px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">Dikembalikan</span>
                                     @else
                                         <span class="text-[10px] font-bold uppercase px-3 py-1 bg-rose-50 text-rose-600 rounded-full border border-rose-100">Gagal / Dibatalkan</span>
                                     @endif

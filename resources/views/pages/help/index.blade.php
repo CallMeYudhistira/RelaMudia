@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Pusat Bantuan | RelaMudia</x-slot:title>
 
-    <div class="bg-slate-50 min-h-screen pt-28 pb-20">
+    <div class="bg-white min-h-screen pt-28 pb-20">
         <div class="max-w-5xl mx-auto px-6">
 
             <div class="text-center mb-16">

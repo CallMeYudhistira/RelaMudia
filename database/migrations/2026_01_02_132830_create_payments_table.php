@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('payment_method')->nullable();
             $table->string('payment_reference');
             $table->string('payment_url');
-            $table->enum('status', ['pending', 'success', 'failed', 'refund'])->default('pending');
+            $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
             $table->timestamps();
         });
     }

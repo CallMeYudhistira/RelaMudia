@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Keranjang Belanja | RelaMudia</x-slot:title>
 
-    <div class="bg-slate-50 min-h-screen pt-8 pb-20">
+    <div class="bg-white min-h-screen pt-8 pb-20">
         <div class="max-w-7xl mx-auto px-6">
 
             <nav class="flex items-center gap-2 text-sm text-slate-400 mb-8">

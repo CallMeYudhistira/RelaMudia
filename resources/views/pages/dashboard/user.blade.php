@@ -32,7 +32,7 @@
                             class="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full transition-all duration-300 font-semibold shadow-lg shadow-teal-200">
                             Explore Gear
                         </a>
-                        <a href="#"
+                        <a href="{{ route('items.list') }}"
                             class="bg-white border border-teal-200 text-teal-600 px-8 py-4 rounded-full hover:bg-teal-50 transition-all duration-300 font-semibold">
                             Our Service
                         </a>
