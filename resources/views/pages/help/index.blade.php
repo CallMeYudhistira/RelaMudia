@@ -66,7 +66,7 @@
                         Hubungi Kami
                     </h3>
 
-                    <a href="https://wa.me/628123456789" target="_blank"
+                    <a href="https://wa.me/6281316560366" target="_blank"
                        class="block bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg hover:shadow-teal-500/10 hover:-translate-y-1 transition-all group">
                         <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
                             <i class="bx bxl-whatsapp text-2xl"></i>
@@ -78,7 +78,7 @@
                         </span>
                     </a>
 
-                    <a href="mailto:support@relamudia.com"
+                    <a href="mailto:tiray9272@gmail.com"
                        class="block bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg hover:shadow-teal-500/10 hover:-translate-y-1 transition-all group">
                         <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mb-4 group-hover:bg-teal-600 group-hover:text-white transition-colors">
                             <i class="bx bx-envelope text-2xl"></i>

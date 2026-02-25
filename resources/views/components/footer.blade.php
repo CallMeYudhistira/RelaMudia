@@ -61,11 +61,6 @@
             <p class="text-slate-400 text-xs">
                 © 2026 RelaMudia. Dibuat dengan cinta untuk para kreator.
             </p>
-            <div class="flex items-center gap-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 grayscale opacity-50 hover:opacity-100 transition-opacity" alt="PayPal">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-6 grayscale opacity-50 hover:opacity-100 transition-opacity" alt="Mastercard">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 grayscale opacity-50 hover:opacity-100 transition-opacity" alt="Visa">
-            </div>
         </div>
     </div>
 </footer>
