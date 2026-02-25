@@ -1,66 +1,134 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎥 Relamudia (Rental Alat Multimedia)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
+[![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://www.php.net/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Midtrans](https://img.shields.io/badge/Payment-Midtrans-orange.svg)](https://midtrans.com/)
+[![Performance](https://img.shields.io/badge/Octane-Ready-yellow.svg)](https://laravel.com/docs/11.x/octane)
 
-## About Laravel
+**Relamudia** is a robust and modern Multimedia Rental Management System built with Laravel 12. It provides a seamless experience for both administrators to manage their inventory and customers to rent high-quality multimedia equipment.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 👤 User Features
+- **Modern Dashboard:** High-level view of available categories and featured items.
+- **Advanced Item Discovery:** Filter by category and search through the multimedia inventory.
+- **Shopping Cart System:** Add multiple items to your cart, manage quantities, and see instant subtotal calculations.
+- **Secure Checkout:** Integrated with **Midtrans Snap** for a safe and various payment methods (VA, E-Wallet, QRIS, etc.).
+- **Transaction History:** Track your rental status from *Pending* to *Completed*.
+- **Profile Management:** Easily update personal details and security settings.
 
-## Learning Laravel
+### 🛡️ Admin Features
+- **Management Analytics:** Detailed dashboard with revenue charts, top items, and rental statistics.
+- **Inventory Management:** Full CRUD capabilities for multimedia items and categories.
+- **User Management:** Control and manage customer accounts.
+- **Transaction Processing:** Monitor payments and update rental statuses (Ongoing, Completed, etc.).
+- **PDF Reporting:** Generate and export professional reports for:
+    - Sales & Revenue
+    - Customer Activity
+    - Item Popularity
+- **Role-Based Access Control:** Secure middleware ensuring administrative sections are protected.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Framework:** [Laravel 12](https://laravel.com)
+- **Frontend:** [Blade](https://laravel.com/docs/blade), [Alpine.js](https://alpinejs.dev/), [Tailwind CSS](https://tailwindcss.com)
+- **Interactive UI:** [Swiper.js](https://swiperjs.com/), [Flatpickr](https://flatpickr.js.org/), [Boxicons](https://boxicons.com/)
+- **Database:** MySQL / SQLite
+- **Payments:** [Midtrans PHP SDK](https://github.com/Midtrans/midtrans-php)
+- **PDF Generation:** [Laravel-DomPDF](https://github.com/barryvdh/laravel-dompdf)
+- **High Performance:** [Laravel Octane](https://laravel.com/docs/octane)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Installation
 
-### Premium Partners
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js & NPM
+- MySQL or SQLite
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Steps
 
-## Contributing
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/CallMeYudhistira/RelaMudia.git
+   cd RelaMudia
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Code of Conduct
+3. **Configure Environment:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Set up Database:**
+   Update your `.env` with your database credentials.
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## Security Vulnerabilities
+5. **Configure Midtrans:**
+   Add your Midtrans keys to the `.env` file:
+   ```env
+   MIDTRANS_MERCHANT=your_merchant_id
+   MIDTRANS_CLIENT_KEY=your_client_key
+   MIDTRANS_SERVER_KEY=your_server_key
+   MIDTRANS_IS_PRODUCTION=false
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. **Build Assets:**
+   ```bash
+   npm run build
+   ```
 
-## License
+7. **Run the Application:**
+   ```bash
+   php artisan serve
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 🐳 Running with Docker
+
+This project is Docker-ready! You can quickly spin up the environment using Docker Compose:
+
+1. **Build and start the containers:**
+   ```bash
+   docker-compose up -d --build
+   ```
+
+2. **Access the application:**
+   Open your browser and navigate to `http://localhost:8000` (or the port defined in your `docker-compose.yml`).
+
+3. **Install dependencies inside the container (if necessary):**
+   ```bash
+   docker-compose exec app composer install
+   docker-compose exec app npm install
+   docker-compose exec app npm run build
+   docker-compose exec app php artisan migrate --seed
+   ```
+
+---
+
+## 📈 Database Schema Highlights
+
+- **Users:** Authentication and roles (Admin/User).
+- **MultimediaItems:** Inventory details including price per day and images.
+- **Categories:** Logical grouping for equipment.
+- **Rentals & RentalDetails:** Core logic for tracking dates, totals, and rented items.
+- **Payments:** Integration records for Midtrans transactions.
+- **Carts:** Temporary storage for customer selections.
+
+---
+
+<p align="center">Made with ❤️</p>

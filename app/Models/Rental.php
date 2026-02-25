@@ -29,9 +29,4 @@ class Rental extends Model
     {
         return $this->hasOne(Payment::class);
     }
-
-    public function faceCapture()
-    {
-        return $this->hasOne(FaceCapture::class);
-    }
 }
