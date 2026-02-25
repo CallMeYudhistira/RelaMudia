@@ -88,7 +88,7 @@
                                     class="text-xs font-black {{ $isPaid ? 'text-slate-800' : 'text-slate-400' }} uppercase tracking-wider mb-1">
                                     Pengambilan</p>
                                 <p class="text-sm text-slate-500">
-                                    {{ \Carbon\Carbon::parse($payment->rental->start_date)->format('d M Y') }}</p>
+                                    {{ \Carbon\Carbon::parse($payment->rental->start_date)->translatedFormat('d M Y') }}</p>
                                 <p
                                     class="text-[10px] {{ $isPaid ? 'text-teal-600' : 'text-slate-400' }} font-bold uppercase mt-1">
                                     Gudang RelaMudia</p>
@@ -124,7 +124,7 @@
                                     class="text-xs font-black {{ $isCompleted ? 'text-slate-800' : 'text-slate-400' }} uppercase tracking-wider mb-1">
                                     Pengembalian</p>
                                 <p class="text-sm text-slate-500">
-                                    {{ \Carbon\Carbon::parse($payment->rental->end_date)->format('d M Y') }}</p>
+                                    {{ \Carbon\Carbon::parse($payment->rental->end_date)->translatedFormat('d M Y') }}</p>
                                 <p
                                     class="text-[10px] {{ $isCompleted ? 'text-teal-600' : 'text-slate-400' }} font-bold uppercase mt-1">
                                     Maks. Pukul 21:00</p>

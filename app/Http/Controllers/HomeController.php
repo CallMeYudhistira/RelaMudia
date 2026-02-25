@@ -32,7 +32,7 @@ class HomeController extends Controller
         $revenues = [];
         for ($i = 5; $i >= 0; $i--) {
             $date = Carbon::now()->subMonths($i);
-            $months[] = $date->format('F');
+            $months[] = $date->translatedFormat('F');
             $revenues[] = Rental::whereIn('status', ['paid', 'ongoing', 'completed'])
                 ->whereMonth('created_at', $date->month)
                 ->whereYear('created_at', $date->year)

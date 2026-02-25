@@ -113,7 +113,7 @@
                                         </span>
                                     </td>
                                     <td class="px-6 py-5 text-xs text-slate-500 font-medium">
-                                        {{ $trx->created_at->format('d M Y, H:i') }}
+                                        {{ $trx->created_at->translatedFormat('d M Y, H:i') }}
                                     </td>
                                     <td class="px-6 py-5 text-center">
                                         <button

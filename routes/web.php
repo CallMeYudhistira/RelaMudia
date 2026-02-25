@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
         Route::prefix('/report')->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('report.index');
+            Route::get('/print', [ReportController::class, 'print'])->name('report.print');
         });
 
         Route::prefix('/transaction')->group(function () {

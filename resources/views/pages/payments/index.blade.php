@@ -48,7 +48,7 @@
                                     @endif
 
                                     <span class="text-xs text-slate-400 ml-auto lg:ml-0">
-                                        <i class="bx bx-calendar-alt"></i> {{ $transaction->created_at->format('d M Y, H:i') }}
+                                        <i class="bx bx-calendar-alt"></i> {{ $transaction->created_at->translatedFormat('d M Y, H:i') }}
                                     </span>
                                 </div>
 

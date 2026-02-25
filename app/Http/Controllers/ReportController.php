@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rental;
 use App\Models\RentalDetail;
-use App\Models\User;
-use App\Models\MultimediaItem;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +12,34 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     public function index(Request $request)
+    {
+        $reportData = $this->getReportData($request);
+        return view('pages.reports.index', $reportData);
+    }
+
+    public function print(Request $request)
+    {
+        Carbon::setLocale(config('app.locale'));
+        $reportData = $this->getReportData($request);
+
+        $viewMap = [
+            'sales' => 'sales',
+            'customer' => 'users',
+            'item' => 'items'
+        ];
+
+        $viewName = $viewMap[$reportData['type']] ?? 'sales';
+        $view = 'pages.reports.pdf.' . $viewName;
+
+        if (!view()->exists($view)) {
+            $view = 'pages.reports.pdf.sales';
+        }
+
+        $pdf = Pdf::loadView($view, $reportData);
+        return $pdf->stream('laporan-' . $reportData['type'] . '-' . now()->format('YmdHis') . '.pdf');
+    }
+
+    private function getReportData(Request $request)
     {
         $type = $request->get('type', 'sales'); // sales, customer, item
         $period = $request->get('period', 'monthly');
@@ -37,7 +64,7 @@ class ReportController extends Controller
 
         // --- Summary Stats ---
         $turnover = (clone $query)->sum('total_price');
-        
+
         $top_customer = (clone $query)->select('user_id', DB::raw('SUM(total_price) as total_spent'))
             ->groupBy('user_id')
             ->orderByDesc('total_spent')
@@ -74,6 +101,23 @@ class ReportController extends Controller
                 ->get();
         }
 
-        return view('pages.reports.index', compact('data', 'type', 'period', 'startDate', 'endDate', 'turnover', 'top_customer', 'top_item'));
+        // Determine date range text for display
+        $dari = $startDate ?? Carbon::now()->startOfMonth()->toDateString();
+        $sampai = $endDate ?? Carbon::now()->endOfMonth()->toDateString();
+
+        if($period == 'daily') {
+            $dari = $sampai = Carbon::today()->toDateString();
+        } elseif($period == 'weekly') {
+            $dari = Carbon::now()->startOfWeek()->toDateString();
+            $sampai = Carbon::now()->endOfWeek()->toDateString();
+        } elseif($period == 'monthly') {
+            $dari = Carbon::now()->startOfMonth()->toDateString();
+            $sampai = Carbon::now()->endOfMonth()->toDateString();
+        } elseif($period == 'yearly') {
+            $dari = Carbon::now()->startOfYear()->toDateString();
+            $sampai = Carbon::now()->endOfYear()->toDateString();
+        }
+
+        return compact('data', 'type', 'period', 'startDate', 'endDate', 'turnover', 'top_customer', 'top_item', 'dari', 'sampai');
     }
 }
