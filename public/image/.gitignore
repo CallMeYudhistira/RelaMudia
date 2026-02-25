@@ -1,0 +1,7 @@
+*
+!.gitignore
+!icon.png
+!tile.png
+!items/
+items/*
+!items/default.png
