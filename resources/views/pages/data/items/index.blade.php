@@ -29,8 +29,8 @@
                     </a>
                 </div>
 
-                <div>
-                    <table class="w-full text-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm whitespace-nowrap">
                         <thead class="bg-gray-50 text-gray-600">
                             <tr>
                                 <th class="px-4 py-3 text-left font-semibold">#</th>

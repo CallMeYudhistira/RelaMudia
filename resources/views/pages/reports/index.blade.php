@@ -128,7 +128,7 @@
             <div
                 class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden print:border-none print:shadow-none">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse whitespace-nowrap">
                         <thead>
                             <tr class="bg-slate-50/50 border-b border-slate-100">
                                 @if ($type == 'sales')

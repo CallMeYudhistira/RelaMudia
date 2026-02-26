@@ -118,7 +118,7 @@
                             <input type="hidden" name="end_date" id="end_date">
                             <textarea name="note" rows="3"
                                 placeholder="Contoh: Saya butuh kabel charger cadangan atau instruksi khusus pengambilan barang..."
-                                class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/5 transition-all text-sm text-slate-700 placeholder:text-slate-300 resize-none"></textarea>
+                                class="w-full px-5 pt-4 pb-8 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/5 transition-all text-sm text-slate-700 placeholder:text-slate-300 resize-none"></textarea>
 
                             <div
                                 class="absolute bottom-4 right-4 flex items-center gap-2 pointer-events-none opacity-40">

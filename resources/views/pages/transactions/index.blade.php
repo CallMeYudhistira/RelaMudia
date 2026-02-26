@@ -10,10 +10,10 @@
                     <p class="text-slate-500 mt-1">Kelola status penyewaan dan pantau aktivitas transaksi pelanggan.</p>
                 </div>
 
-                <form action="{{ route('transaction.index') }}" method="GET" class="flex" id="formFilter">
-                    <div class="relative">
+                <form action="{{ route('transaction.index') }}" method="GET" class="flex flex-col sm:flex-row gap-4 w-full md:w-auto" id="formFilter">
+                    <div class="relative w-full sm:w-52">
                         <select
-                            class="appearance-none w-full sm:w-52 px-5 py-2.5 mx-2 bg-white border border-teal-100 rounded-xl outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/5 transition-all text-slate-700 font-medium cursor-pointer"
+                            class="appearance-none w-full px-5 py-3 bg-white border border-teal-100 rounded-xl outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/5 transition-all text-slate-700 font-medium cursor-pointer"
                             name="status" onchange="submitForm();">
                             <option value="" selected>Semua Kategori</option>
                             <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Proses</option>
@@ -25,7 +25,7 @@
                         <i
                             class="bx bx-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xl"></i>
                     </div>
-                    <div class="flex gap-3 w-full">
+                    <div class="w-full sm:w-64">
                         <div class="relative group">
                             <i
                                 class="bx bx-calendar absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg group-focus-within:text-teal-600 transition-colors"></i>
@@ -41,7 +41,7 @@
 
             <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse whitespace-nowrap">
                         <thead>
                             <tr class="bg-slate-50/50 border-b border-slate-100">
                                 <th class="px-6 py-5 text-[11px] font-black uppercase tracking-widest text-slate-400">
