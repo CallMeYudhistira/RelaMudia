@@ -8,13 +8,14 @@ mkdir -p storage/app/public \
 chmod -R 777 storage bootstrap/cache public
 
 # 2. Handle .env and APP_KEY
-if [ ! -f .env ]; then
-    echo "Creating .env from .env.example..."
+# If .env doesn't exist AND APP_KEY isn't in the system environment, create one
+if [ ! -f .env ] && [ -z "$APP_KEY" ]; then
+    echo "No .env file or APP_KEY environment variable found. Creating from .env.example..."
     cp .env.example .env
 fi
 
-# Ensure APP_KEY exists
-if ! grep -q "^APP_KEY=base64:" .env; then
+# Only generate a key if one isn't already present in the .env file OR the system environment
+if [ -f .env ] && ! grep -q "^APP_KEY=base64:" .env && [ -z "$APP_KEY" ]; then
     echo "Generating application key..."
     php artisan key:generate --force --no-interaction
 fi
