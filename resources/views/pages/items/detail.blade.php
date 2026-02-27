@@ -5,7 +5,7 @@
         <div class="flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
 
             <div class="lg:w-7/12 bg-[#F6F6F6] flex items-center justify-center p-8 lg:p-20 relative rounded-r-2xl">
-                <nav class="absolute top-8 left-8 text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                <nav class="absolute top-3 left-8 text-[10px] uppercase tracking-[0.2em] text-slate-400">
                     <a href="/" class="hover:text-teal-600">Home</a> /
                     <a href="/items" class="hover:text-teal-600">{{ $item->category->name }}</a> /
                     <span class="text-slate-800">{{ $item->name }}</span>

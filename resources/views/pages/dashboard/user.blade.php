@@ -42,14 +42,14 @@
         </div>
 
         <div id="explore" class="max-w-7xl mx-auto px-8 py-25">
-            <div class="flex items-end justify-between mb-12 border-b border-teal-50 pb-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-teal-50 pb-6 gap-6 md:gap-0">
                 <div>
                     <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Koleksi Terpopuler</h2>
                     <p class="text-slate-400 mt-2">Peralatan multimedia terbaik untuk hasil maksimal.</p>
                 </div>
 
-                <div class="flex items-center gap-8">
-                    <div class="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-widest mr-4">
+                <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 w-full md:w-auto">
+                    <div class="flex gap-4 md:gap-6 text-sm font-semibold uppercase tracking-widest overflow-x-auto no-scrollbar whitespace-nowrap pb-2 md:pb-0">
                         <a href="{{ route('dashboard.user', 'category_id=' . '#explore') }}"
                             class="text-teal-600 {{ $category_id ? '' : 'border-b-2' }} border-teal-600 pb-1">Semua</a>
                         @foreach ($categories as $category)
@@ -58,7 +58,7 @@
                         @endforeach
                     </div>
 
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 self-end md:self-auto">
                         <button
                             class="swiper-prev w-10 h-10 rounded-full border border-teal-100 flex items-center justify-center text-teal-600 hover:bg-teal-600 hover:text-white transition-all">
                             <i class="bx bx-chevron-left text-2xl"></i>

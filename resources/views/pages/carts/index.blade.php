@@ -47,7 +47,7 @@
                                                     <div
                                                         class="w-20 h-20 rounded-2xl bg-slate-100 overflow-hidden border border-slate-100 p-2">
                                                         <img src="{{ $cart->multimediaItem->image }}"
-                                                            class="w-full h-full object-cover rounded-2xl">
+                                                            class="w-full h-full object-contain rounded-2xl">
                                                     </div>
                                                     <div>
                                                         <h4 class="font-bold text-slate-800">

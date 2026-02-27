@@ -83,7 +83,7 @@
 
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-                            <div class="space-y-2" x-data="{ imagePreview: '{{ $item->image ? asset('image/items/' . $item->image) : null }}' }">
+                            <div class="space-y-2" x-data="{ imagePreview: '{{ asset($item->image) }}' }">
                                 <div class="flex flex-col gap-4 my-2">
                                     <div class="flex items-center w-full">
                                         <label for="image"

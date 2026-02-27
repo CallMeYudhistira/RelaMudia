@@ -28,7 +28,7 @@
                     </a>
                 </div>
 
-                <div class="overflow-x-auto">
+                <div class="overflow-x-auto min-h-[400px]">
                     <table class="w-full text-sm whitespace-nowrap">
                         <thead class="bg-gray-50 text-gray-600">
                             <tr>
@@ -40,7 +40,7 @@
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($categories as $i => $category)
                                 {{-- Kita definisikan x-data di level TR agar mencakup tombol aksi dan modal --}}
-                                <tr class="hover:bg-gray-50" x-data="{ openDelete: false, openMenu: false }">
+                                <tr class="hover:bg-gray-50" x-data="{ openDelete: false, openMenu: false }" :class="{ 'relative z-50': openMenu }">
                                     <td class="px-4 py-3 text-center w-5">{{ $i + 1 }}</td>
                                     <td class="px-4 py-3 font-medium text-gray-800">{{ $category->name }}</td>
                                     <td class="px-4 py-3 text-center relative w-10">
