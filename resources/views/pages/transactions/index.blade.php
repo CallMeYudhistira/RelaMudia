@@ -152,10 +152,10 @@
                                 Transaksi</label>
                             <select name="status" id="modalStatus"
                                 class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:ring-2 focus:ring-teal-500 outline-none transition-all">
-                                <option value="paid">Paid</option>
-                                <option value="ongoing">Ongoing</option>
-                                <option value="completed">Completed</option>
-                                <option value="cancelled">Cancelled</option>
+                                <option value="paid">Dibayar</option>
+                                <option value="ongoing">Digunakan</option>
+                                <option value="completed">Selesai</option>
+                                <option value="cancelled">Dibatalkan</option>
                             </select>
                         </div>
 

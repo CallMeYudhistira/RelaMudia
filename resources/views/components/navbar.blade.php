@@ -22,13 +22,13 @@
             @if ($isAdmin)
                 <x-nav-link href="{{ route('dashboard.admin') }}" :active="request()->is('admin/dashboard*')">Dashboard</x-nav-link>
                 <x-nav-link href="{{ route('data') }}" :active="request()->is('admin/data*')">Data</x-nav-link>
-                <x-nav-link href="{{ route('transaction.index') }}" :active="request()->is('admin/transaction*')">Transaction</x-nav-link>
-                <x-nav-link href="{{ route('report.index') }}" :active="request()->is('admin/report*')">Report</x-nav-link>
+                <x-nav-link href="{{ route('transaction.index') }}" :active="request()->is('admin/transaction*')">Transaksi</x-nav-link>
+                <x-nav-link href="{{ route('report.index') }}" :active="request()->is('admin/report*')">Laporan</x-nav-link>
             @else
                 <x-nav-link href="{{ route('dashboard.user') }}" :active="request()->is('dashboard*')">Dashboard</x-nav-link>
-                <x-nav-link href="{{ route('items.list') }}" :active="request()->is('items*')">Items</x-nav-link>
-                <x-nav-link href="{{ route('payment.index') }}" :active="request()->is('payment*')">Payment</x-nav-link>
-                <x-nav-link href="{{ route('help.index') }}" :active="request()->is('help*')">Help</x-nav-link>
+                <x-nav-link href="{{ route('items.list') }}" :active="request()->is('items*')">Barang</x-nav-link>
+                <x-nav-link href="{{ route('payment.index') }}" :active="request()->is('payment*')">Pembayaran</x-nav-link>
+                <x-nav-link href="{{ route('help.index') }}" :active="request()->is('help*')">Bantuan</x-nav-link>
             @endif
         </nav>
 
@@ -51,7 +51,7 @@
                         class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-xl border border-teal-50 overflow-hidden py-2"
                         style="display: none;">
                         <div class="px-4 py-3 border-b border-gray-50 mb-1">
-                            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">User Info</p>
+                            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Informasi Pengguna</p>
                             <p class="text-sm font-bold text-slate-800 truncate" style="text-transform: capitalize;">
                                 {{ auth()->user()->name }}</p>
                         </div>
@@ -88,8 +88,7 @@
 
             @guest
                 <a href="{{ route('login') }}"
-                    class="hidden sm:block bg-teal-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-teal-700 transition">Get
-                    Started</a>
+                    class="hidden sm:block bg-teal-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-teal-700 transition">Mulai</a>
             @endguest
 
             <!-- Mobile Menu Toggle Button -->
@@ -113,13 +112,13 @@
             @if ($isAdmin)
                 <x-nav-link :mobile="true" href="{{ route('dashboard.admin') }}" :active="request()->is('admin/dashboard*')">Dashboard</x-nav-link>
                 <x-nav-link :mobile="true" href="{{ route('data') }}" :active="request()->is('admin/data*')">Data</x-nav-link>
-                <x-nav-link :mobile="true" href="{{ route('transaction.index') }}" :active="request()->is('admin/transaction*')">Transaction</x-nav-link>
-                <x-nav-link :mobile="true" href="{{ route('report.index') }}" :active="request()->is('admin/report*')">Report</x-nav-link>
+                <x-nav-link :mobile="true" href="{{ route('transaction.index') }}" :active="request()->is('admin/transaction*')">Transaksi</x-nav-link>
+                <x-nav-link :mobile="true" href="{{ route('report.index') }}" :active="request()->is('admin/report*')">Laporan</x-nav-link>
             @else
                 <x-nav-link :mobile="true" href="{{ route('dashboard.user') }}" :active="request()->is('dashboard*')">Dashboard</x-nav-link>
-                <x-nav-link :mobile="true" href="{{ route('items.list') }}" :active="request()->is('items*')">Items</x-nav-link>
-                <x-nav-link :mobile="true" href="{{ route('payment.index') }}" :active="request()->is('payment*')">Payment</x-nav-link>
-                <x-nav-link :mobile="true" href="{{ route('help.index') }}" :active="request()->is('help*')">Help</x-nav-link>
+                <x-nav-link :mobile="true" href="{{ route('items.list') }}" :active="request()->is('items*')">Barang</x-nav-link>
+                <x-nav-link :mobile="true" href="{{ route('payment.index') }}" :active="request()->is('payment*')">Pembayaran</x-nav-link>
+                <x-nav-link :mobile="true" href="{{ route('help.index') }}" :active="request()->is('help*')">Bantuan</x-nav-link>
             @endif
 
             <hr class="my-4 border-gray-50">
@@ -149,7 +148,7 @@
                     <i class="bx bx-log-out me-2"></i> Keluar
                 </button>
             @else
-                <a href="{{ route('login') }}" class="block w-full text-center bg-teal-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-700 transition">Get Started</a>
+                <a href="{{ route('login') }}" class="block w-full text-center bg-teal-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-700 transition">Mulai</a>
             @endauth
         </div>
     </div>

@@ -19,7 +19,7 @@
                     </div>
                     <div class="relative z-10">
                         <i class="bx bx-wallet text-3xl text-teal-600 mb-4 block"></i>
-                        <p class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Total Turnover
+                        <p class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Total Omzet
                         </p>
                         <h3 class="text-2xl font-black text-slate-900">Rp
                             {{ number_format($total_revenue, 0, ',', '.') }}</h3>

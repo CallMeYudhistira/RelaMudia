@@ -5,7 +5,7 @@
         <div class="max-w-5xl mx-auto px-6">
 
             <nav class="flex items-center gap-2 text-sm text-slate-400 mb-6">
-                <a href="/" class="hover:text-teal-600 transition-colors">Home</a>
+                <a href="/" class="hover:text-teal-600 transition-colors">Beranda</a>
                 <i class="bx bx-chevron-right"></i>
                 <span class="text-slate-800 font-medium">Riwayat Transaksi</span>
             </nav>

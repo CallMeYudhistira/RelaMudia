@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login | RelaMudia</title>
+    <title>Masuk | RelaMudia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
@@ -15,7 +15,7 @@
         <div class="text-center mb-8">
             <img src="{{ asset('favicon.svg') }}" class="w-100 h-35 object-contain" style="margin: -1rem 0;">
             <h1 class="text-3xl font-bold text-primary">RelaMudia</h1>
-            <p class="text-sm text-gray-500 mt-2">Login to your account</p>
+            <p class="text-sm text-gray-500 mt-2">Masuk ke akun Anda</p>
         </div>
 
         @error('error')
@@ -32,14 +32,14 @@
                 <label class="block text-sm font-medium mb-1">Email</label>
                 <input type="email" name="email"
                     class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
-                    placeholder="you@example.com" value="{{ old('email') }}">
+                    placeholder="anda@contoh.com" value="{{ old('email') }}">
                 @error('email')
                     <div class="text-red-500 text-sm m-2">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-6">
-                <label class="block text-sm font-medium mb-1">Password</label>
+                <label class="block text-sm font-medium mb-1">Kata Sandi</label>
                 <input type="password" name="password"
                     class="p-2 m-1 w-full rounded-lg border border-primary focus:outline-primary-400 focus:ring-primary-600"
                     placeholder="••••••••" autocomplete="off">
@@ -50,14 +50,14 @@
 
             <button type="submit"
                 class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition">
-                Sign In
+                Masuk
             </button>
         </form>
 
         <p class="text-center text-sm text-gray-500 mt-6">
-            Don’t have an account?
+            Belum punya akun?
             <a href="{{ route('register') }}" class="text-primary font-medium hover:underline">
-                Register
+                Daftar
             </a>
         </p>
     </div>

@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <nav class="flex items-center gap-2 text-sm text-slate-400 mb-8">
-                <a href="/" class="hover:text-teal-600">Home</a>
+                <a href="/" class="hover:text-teal-600">Beranda</a>
                 <i class="bx bx-chevron-right"></i>
                 <span class="text-slate-800 font-medium">Keranjang Belanja</span>
             </nav>

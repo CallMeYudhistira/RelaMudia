@@ -18,10 +18,10 @@
                 <div class="max-w-xl">
                     <span
                         class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase bg-teal-100 text-teal-700 rounded-full">
-                        New Arrival
+                        Produk Baru
                     </span>
                     <h1 class="text-5xl md:text-7xl font-light tracking-tighter mb-6 text-slate-800">
-                        Capture the <br><span class="font-bold text-teal-600">Perfect Moment.</span>
+                        Abadikan <br><span class="font-bold text-teal-600">Momen Sempurna.</span>
                     </h1>
                     <p class="text-lg text-slate-500 mb-8 font-light leading-relaxed">
                         Sewa perangkat kamera dan lighting profesional untuk kebutuhan produksi konten Anda dengan harga
@@ -30,11 +30,11 @@
                     <div class="flex gap-4">
                         <a href="#explore"
                             class="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full transition-all duration-300 font-semibold shadow-lg shadow-teal-200">
-                            Explore Gear
+                            Jelajahi Alat
                         </a>
                         <a href="{{ route('items.list') }}"
                             class="bg-white border border-teal-200 text-teal-600 px-8 py-4 rounded-full hover:bg-teal-50 transition-all duration-300 font-semibold">
-                            Our Service
+                            Layanan Kami
                         </a>
                     </div>
                 </div>
