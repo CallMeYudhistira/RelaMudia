@@ -7,6 +7,8 @@ services:
             - "8001:80" # Map internal 80 to external 8001
         env_file:
             - .env
+        volumes:
+            - relamudia_app_items:/app/public/image/items
         depends_on:
             db:
                 condition: service_healthy
@@ -40,3 +42,4 @@ networks:
 
 volumes:
     relamudia_db_data:
+    relamudia_app_items:
