@@ -2,6 +2,7 @@
 !.gitignore
 !icon.png
 !tile.png
+!preview.png
 !items/
 items/*
 !items/default.png
